@@ -28,7 +28,7 @@ public class UserService {
     }
 
 
-    public boolean register(User user) {
+    public Boolean register(User user) {
         if (racekatteRepo.readUserByEmail(user.getEmail()) != null) {
             return false;
         }

@@ -13,7 +13,7 @@ import java.util.List;
 @Controller
 public class MenuController {
 
-    RacekatteRepo racekatteRepo = new RacekatteRepo();
+    RacekatteRepo racekatteRepo;
 
     @GetMapping("/menu")
     public String getMenu(Model model) {

@@ -16,6 +16,10 @@ public class RacekatteRepo {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
+    public RacekatteRepo(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
+
 
     // racekatte metoder
     public void createRacekat(Racekat racekat) {
