@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bruger</title>
+</head>
+<body>
+<form th:action="@{/edituser}" th:object="${bruger}" th:method="post">
+    <label for="email">Indtast ny email</label>
+    <input type="email" id="email" name="email">
+    <label for="name">Indtast nyt navn</label>
+    <input type="text" id="name" name="name">
+    <label for="password">Indtast ny adgangskode</label>
+    <input type="password" id="password" name="password">
+    <button type="submit">Ændr brugerinfo</button>
+</form>
+
+
+
+</body>
+</html>

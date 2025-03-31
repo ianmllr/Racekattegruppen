@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Racekatteklubben - Log ind</title>
+</head>
+<body>
+
+
+<form th:action="@{/login}" th:object="${user}" method="post">
+    <label for="email">
+        Indtast email:
+    </label>
+    <input type="text" id ="email" name="email" th:field="*{email}" required>
+    <label for ="password">
+        Indtast password:
+    </label>
+    <input type="password" id="password" name="password" th:field="*{password}" required>
+    <button type="submit">Log ind</button>
+</form>
+
+<p th:if="${error}" th:text="${error}" style="color:deeppink;"></p>
+
+</body>
+</html>
