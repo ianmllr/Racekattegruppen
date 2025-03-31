@@ -1,5 +1,6 @@
 package org.example.racekattegruppen.Database;
 
+import jakarta.annotation.PostConstruct;
 import org.example.racekattegruppen.Model.Racekat;
 import org.example.racekattegruppen.Model.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,15 +14,8 @@ import java.util.List;
 public class RacekatteRepo {
 
     @Autowired
-    JdbcTemplate jdbcTemplate;
+    private JdbcTemplate jdbcTemplate;
 
-    public RacekatteRepo() {}
-
-    public RacekatteRepo(JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
-    }
-
-    /// ////////////////////////
 
     // racekatte metoder
     public void createRacekat(Racekat racekat) {
@@ -54,7 +48,6 @@ public class RacekatteRepo {
     // user metoder
     public boolean createUser(User user) {
         String sql = "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
-        System.out.println(jdbcTemplate.update(sql, user.getUsername(), user.getEmail(), user.getPassword()));
        int result = jdbcTemplate.update(sql, user.getUsername(), user.getEmail(), user.getPassword());
        return result == 1;
     }
@@ -65,7 +58,7 @@ public class RacekatteRepo {
     }
 
    public User readUserByEmail(String email) {
-       String sql = "SELECT * FROM users WHERE email = ?";
+       String sql = "SELECT * FROM users WHERE email = ? LIMIT 1";
        try {
            return jdbcTemplate.queryForObject(sql, new Object[]{email}, (rs, rowNum) -> {
                User user = new User();

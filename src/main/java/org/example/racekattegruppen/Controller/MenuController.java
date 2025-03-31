@@ -16,11 +16,8 @@ public class MenuController {
     RacekatteRepo racekatteRepo = new RacekatteRepo();
 
     @GetMapping("/menu")
-    public ModelAndView getMenu(Model model) {
-        List<Racekat> racecats = racekatteRepo.readRacekatte();
-        ModelAndView modelAndView = new ModelAndView("menu");
-        modelAndView.addObject("racecats", racecats);
-        return modelAndView;
+    public String getMenu(Model model) {
+        return "menu";
     }
 
 
