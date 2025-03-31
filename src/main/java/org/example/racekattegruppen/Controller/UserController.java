@@ -43,15 +43,16 @@ public class UserController {
         }
     }
 
-    @GetMapping("/edit")
-    public String editUser(@ModelAttribute User user, HttpSession session, Model model) {
-        String loggedInUser = (String) session.getAttribute("user");
-        model.addAttribute("user", user);
-        return "redirect:/edit";
+
+    @GetMapping("/edit/{id}")
+    public String editUser(@PathVariable int id, Model model) {
+
+        model.addAttribute("user", userService.getUser(id));
+        return "edit";
     }
 
     @PostMapping("/edit")
-    public String updateUser(@ModelAttribute User user, HttpSession session){
+    public String updateUser(@ModelAttribute User user){
         String updated = userService.updateUser(user);
         return "edit";
     }

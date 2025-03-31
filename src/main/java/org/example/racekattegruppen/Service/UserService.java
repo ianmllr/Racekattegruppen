@@ -41,9 +41,15 @@ public class UserService {
     public void deleteUser(User user) {
         racekatteRepo.deleteUser(user);
     }
-    public String updateUser(User user){
-        String updated = racekatteRepo.updateUser(user);
-        return updated;
+
+
+    public String updateUser(User user) {
+        racekatteRepo.updateUser(user);
+        return user.getUsername();
+    }
+
+    public User getUser(int id) {
+        return racekatteRepo.getUser(id);
     }
 
 }

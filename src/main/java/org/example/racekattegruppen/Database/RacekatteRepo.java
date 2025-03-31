@@ -5,6 +5,7 @@ import org.example.racekattegruppen.Model.Racekat;
 import org.example.racekattegruppen.Model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -86,5 +87,11 @@ public class RacekatteRepo {
     public void deleteUser(User user) {
         String sql = "DELETE FROM users WHERE id = ?";
         jdbcTemplate.update(sql, user.getId());
+    }
+
+    public User getUser(int id) {
+        User user = null;
+        String sql = "SELECT * FROM users WHERE id = ?";
+        return jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(User.class), 1);
     }
 }
