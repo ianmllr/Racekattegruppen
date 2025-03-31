@@ -87,5 +87,4 @@ public class RacekatteRepo {
         String sql = "DELETE FROM users WHERE id = ?";
         jdbcTemplate.update(sql, user.getId());
     }
-
 }

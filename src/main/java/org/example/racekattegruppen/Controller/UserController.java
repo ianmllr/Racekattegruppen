@@ -6,10 +6,7 @@ import org.example.racekattegruppen.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class UserController {
@@ -46,19 +43,20 @@ public class UserController {
         }
     }
 
-    @GetMapping("/user/{id}")
+    @GetMapping("/edit")
     public String editUser(@ModelAttribute User user, HttpSession session, Model model) {
         String loggedInUser = (String) session.getAttribute("user");
-        return "redirect:/user";
+        model.addAttribute("user", user);
+        return "redirect:/edit";
     }
 
-    @PostMapping("/user")
-    public String updateUser(@ModelAttribute User user, HttpSession session, Model model){
+    @PostMapping("/edit")
+    public String updateUser(@ModelAttribute User user, HttpSession session){
         String updated = userService.updateUser(user);
-        return "user";
+        return "edit";
     }
 
-    @DeleteMapping("/user")
+    @DeleteMapping("/edit")
     public String deleteUser(@ModelAttribute User user, HttpSession session, Model model) {
         userService.deleteUser(user);
         session.invalidate();
