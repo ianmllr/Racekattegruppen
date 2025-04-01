@@ -6,26 +6,33 @@ body {
 }
 h1 {
     padding-top: 50px;
-    font-family: Verdana, serif;
+    font-family: Papyrus, serif;
     font-size: 50px;
     text-align: center;
 }
 form {
-    font-family: Verdana, serif;
+    font-family: Papyrus, serif;
     font-size: 20px;
     text-align: center;
+}
+a
+{
+    text-decoration: none;
 }
 button {
     display: inline-block;
     color: white;
-    background-color: coral;
-    font-family: Verdana;
+    background-color: navajowhite;
+    font-family: Papyrus;
+    font-weight: bold;
     font-size: 20px;
     display: block;
     margin: 75px auto 0;
     padding: 15px 32px;
     border: none;
     width: 200px;
+    border-radius: 50%;
+    text-decoration: none;
 
 
     }
