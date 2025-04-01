@@ -1,6 +1,5 @@
 package org.example.racekattegruppen.Database;
 
-import jakarta.annotation.PostConstruct;
 import org.example.racekattegruppen.Model.Racekat;
 import org.example.racekattegruppen.Model.User;
 import org.springframework.beans.factory.annotation.Autowired;
