@@ -28,6 +28,7 @@ input {
     margin-bottom: 20px;
     background: navajowhite;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+    width: 80%;
 }
 button {
     border: 2px solid black;
@@ -44,5 +45,4 @@ button {
 }
 label {
     font-family: Papyrus, Serif;
-    font-weight: bold;
 }
