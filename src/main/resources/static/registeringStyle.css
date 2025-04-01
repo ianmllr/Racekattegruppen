@@ -26,6 +26,7 @@ button {
     border-radius: 10px;
     padding: 5px;
     background: linear-gradient(#FF8008, #FFC837) no-repeat fixed;
-
-
+}
+#idref {
+    font-size: 15px;
 }
