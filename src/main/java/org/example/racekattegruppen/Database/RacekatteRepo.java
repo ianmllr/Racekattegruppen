@@ -33,6 +33,11 @@ public class RacekatteRepo {
         return jdbcTemplate.queryForObject(sql, (rs, rowNum) -> new Racekat(rs.getInt("id"), rs.getString("name"), rs.getString("race"), rs.getString("description"), rs.getInt("age")), id);
     }
 
+    public List<Racekat> readRacekatteByOwner(int id) {
+        String sql = "SELECT * FROM racekat WHERE userID = ?";
+        return jdbcTemplate.query(sql, (rs, rowNum) -> new Racekat(rs.getInt("id"), rs.getString("name"), rs.getString("race"), rs.getString("description"), rs.getInt("age")), id);
+    }
+
     public void updateRacekat(Racekat racekat) {
         String sql = "UPDATE racekat SET name = ?, race = ?, description = ?, age = ? WHERE id = ?";
         jdbcTemplate.update(sql, racekat.getName(), racekat.getRace(), racekat.getDescription(), racekat.getAge(), racekat.getId());

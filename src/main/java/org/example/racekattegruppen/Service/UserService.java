@@ -46,6 +46,10 @@ public class UserService {
         return racekatteRepo.readRacekatte();
     }
 
+    public List<Racekat> readRacekatteByOwner(int id) {
+        return racekatteRepo.readRacekatteByOwner(id);
+    }
+
     public void updateRacekat(Racekat racekat) {
         racekatteRepo.updateRacekat(racekat);
     }

@@ -27,8 +27,7 @@ public class MenuController {
     public String getMenu(Model model, HttpSession session) {
         User user = (User) session.getAttribute("currentUser");
         model.addAttribute("user", user);
-
-        List<Racekat> racekatte = userService.readRacekatte();
+        List<Racekat> racekatte = userService.readRacekatteByOwner(user.getId());
         model.addAttribute("racekatte", racekatte);
 
         return "menu";
