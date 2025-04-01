@@ -47,6 +47,7 @@ public class UserService {
         user.setPassword(hashed);
         racekatteRepo.updateUser(user);
         return user.getUsername();
+
     }
 
     public User getUser(int id) {
