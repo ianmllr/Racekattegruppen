@@ -7,13 +7,15 @@ public class Racekat {
     private String race;
     private String description;
     private int age;
+    private String picture;
 
-    public Racekat(int id, String name, String race, String description, int age) {
+    public Racekat(int id, String name, String race, String description, int age, String picture) {
         this.id = id;
         this.name = name;
         this.race = race;
         this.description = description;
         this.age = age;
+        this.picture = picture;
     }
 
     public int getId() {
@@ -44,5 +46,10 @@ public class Racekat {
     public void setAge(int age) {
         this.age = age;
     }
-
+    public String getPicture() {
+        return picture;
+    }
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
 }

@@ -19,28 +19,28 @@ public class RacekatteRepo {
 
     // racekatte metoder
     public void createRacekat(Racekat racekat) {
-        String sql = "INSERT INTO racekat (id, name, race, description, age) VALUES (?, ?, ?, ?, ?)";
-        jdbcTemplate.update(sql, racekat.getId(), racekat.getName(), racekat.getRace(), racekat.getDescription(), racekat.getAge());
+        String sql = "INSERT INTO racekat (id, name, race, description, age, picture) VALUES (?, ?, ?, ?, ?, ?)";
+        jdbcTemplate.update(sql, racekat.getId(), racekat.getName(), racekat.getRace(), racekat.getDescription(), racekat.getAge(), racekat.getPicture());
     }
 
     public List<Racekat> readRacekatte() {
         String sql = "SELECT * FROM racekat";
-        return jdbcTemplate.query(sql, (rs, rowNum) -> new Racekat(rs.getInt("id"), rs.getString("name"), rs.getString("race"), rs.getString("description"), rs.getInt("age")));
+        return jdbcTemplate.query(sql, (rs, rowNum) -> new Racekat(rs.getInt("id"), rs.getString("name"), rs.getString("race"), rs.getString("description"), rs.getInt("age"), rs.getString("picture")));
     }
 
     public Racekat readRacekat(int id) {
         String sql = "SELECT * FROM racekat WHERE id = ?";
-        return jdbcTemplate.queryForObject(sql, (rs, rowNum) -> new Racekat(rs.getInt("id"), rs.getString("name"), rs.getString("race"), rs.getString("description"), rs.getInt("age")), id);
+        return jdbcTemplate.queryForObject(sql, (rs, rowNum) -> new Racekat(rs.getInt("id"), rs.getString("name"), rs.getString("race"), rs.getString("description"), rs.getInt("age"), rs.getString("picture")), id);
     }
 
     public List<Racekat> readRacekatteByOwner(int id) {
         String sql = "SELECT * FROM racekat WHERE userID = ?";
-        return jdbcTemplate.query(sql, (rs, rowNum) -> new Racekat(rs.getInt("id"), rs.getString("name"), rs.getString("race"), rs.getString("description"), rs.getInt("age")), id);
+        return jdbcTemplate.query(sql, (rs, rowNum) -> new Racekat(rs.getInt("id"), rs.getString("name"), rs.getString("race"), rs.getString("description"), rs.getInt("age"), rs.getString("picture")), id);
     }
 
     public void updateRacekat(Racekat racekat) {
-        String sql = "UPDATE racekat SET name = ?, race = ?, description = ?, age = ? WHERE id = ?";
-        jdbcTemplate.update(sql, racekat.getName(), racekat.getRace(), racekat.getDescription(), racekat.getAge(), racekat.getId());
+        String sql = "UPDATE racekat SET name = ?, race = ?, description = ?, age = ?, picture = ? WHERE id = ?";
+        jdbcTemplate.update(sql, racekat.getName(), racekat.getRace(), racekat.getDescription(), racekat.getAge(), racekat.getPicture(), racekat.getId());
     }
 
     public void deleteRacekat(Racekat racekat) {

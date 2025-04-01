@@ -15,6 +15,7 @@
     <p th:text="${racekat.name} + ' (' + ${racekat.age} + ' år)'">Navn og alder</p>
     <p th:text="'Race: ' + ${racekat.race}"></p>
     <p th:text="'Beskrivelse: ' + ${racekat.description}"></p>
+    <img id="catpicture" th:src="${racekat.picture}" alt="Billede">
     <button><a th:href="@{/editcat/{id}(id=${racekat.id})}">Rediger</a></button>
     <br>
 </div>

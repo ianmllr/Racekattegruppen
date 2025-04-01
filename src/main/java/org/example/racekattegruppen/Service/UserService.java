@@ -17,6 +17,10 @@ public class UserService {
 
     private User user;
 
+
+
+    // user metoder
+
     public User login(String email, String password) {
         user = racekatteRepo.readUserByEmail(email);
         if (user != null && BCrypt.checkpw(password, user.getPassword())) {
@@ -34,6 +38,20 @@ public class UserService {
         String hashed = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
         user.setPassword(hashed);
         return racekatteRepo.createUser(user);
+    }
+
+    public boolean deleteUser(User user) {
+        return racekatteRepo.deleteUser(user);
+    }
+
+
+    public String updateUser(User user) {
+        racekatteRepo.updateUser(user);
+        return user.getUsername();
+    }
+
+    public User getUser(int id) {
+        return racekatteRepo.getUser(id);
     }
 
     // racekatte metoder
@@ -55,19 +73,5 @@ public class UserService {
     }
 
 
-    // user metoder
 
-    public boolean deleteUser(User user) {
-        return racekatteRepo.deleteUser(user);
-    }
-
-
-    public String updateUser(User user) {
-        racekatteRepo.updateUser(user);
-        return user.getUsername();
-    }
-
-    public User getUser(int id) {
-        return racekatteRepo.getUser(id);
-    }
 }
