@@ -1,8 +1,11 @@
 body {
-    background-color: lightslategrey;
-    opacity: 0.6;
+    background-image: url("https://img.freepik.com/free-vector/cat-lover-pattern-background-design_53876-100662.jpg?t=st=1743496987~exp=1743500587~hmac=8ccb66dcaf444c6cfc95d53300f43d37912102af6b0b864b27a0d2e4bc1b583e&w=1480");
+    background-attachment: fixed;
+    background-size: auto 100%;
+    background-position: center;
 }
 h1 {
+    padding-top: 50px;
     font-family: Verdana, serif;
     font-size: 50px;
     text-align: center;
@@ -13,8 +16,16 @@ form {
     text-align: center;
 }
 button {
-    font-family: Verdana, serif;
+    display: inline-block;
+    color: white;
+    background-color: coral;
+    font-family: Verdana;
     font-size: 20px;
     display: block;
-    margin: 100px auto 0;
-}
+    margin: 75px auto 0;
+    padding: 15px 32px;
+    border: none;
+    width: 200px;
+
+
+    }
