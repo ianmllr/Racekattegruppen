@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Edit</title>
-    <link rel="stylesheet" href="/mystyle.css">
+    <link rel="stylesheet" href="/registeringStyle.css">
 </head>
 <body>
+<div class="box">
 <h1>Rediger bruger</h1>
 <form th:action="@{/edit}" th:object="${user}" th:method="post">
     <input type="hidden" th:field="*{id}">
@@ -14,8 +15,9 @@
     Kodeord: <input type="password" th:field="*{password}"><br><br>
     <button type="submit">Opdater brugerinfo</button>
 </form>
+    <br>
 <button th:onclick="'deleteUser(' + ${id} + ');'">Slet bruger</button>
-
+</div>
 <script>
     function deleteUser(id) {
         if (confirm('Er du sikker på du vil slette bruger?')) {
