@@ -1,0 +1,31 @@
+body {
+    background: linear-gradient(#FF8008, #FFC837) no-repeat fixed;
+    padding-top: 100px;
+}
+.box {
+    width: 350px;
+    height: 400px;
+
+    font-size: 20px;
+    text-align: center;
+    background: rgba(128,128,128,0.1);
+
+    margin: auto;
+    padding: 10px;
+
+}
+input {
+    border: 2px solid black;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    background: linear-gradient(#FF8008, #FFC837) no-repeat fixed;
+    box-shadow: 2px 2px 5px rgba(255, 165, 0, 0.1);
+}
+button {
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 5px;
+    background: linear-gradient(#FF8008, #FFC837) no-repeat fixed;
+
+
+}

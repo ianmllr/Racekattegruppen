@@ -21,8 +21,9 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public String registerUser(@ModelAttribute User user, Model model) {
+    public String registerUser(@ModelAttribute User user, Model model, HttpSession session) {
         if (userService.register(user)) {
+            session.setAttribute("user", user);
             return "redirect:/menu";
         }
         else {
