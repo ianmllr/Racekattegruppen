@@ -79,14 +79,15 @@ public class RacekatteRepo {
         return "User updated";
     }
 
-    public void deleteUser(User user) {
+    public boolean deleteUser(User user) {
         String sql = "DELETE FROM users WHERE id = ?";
-        jdbcTemplate.update(sql, user.getId());
+        int ok = jdbcTemplate.update(sql, user.getId());
+        return ok == 1;
     }
 
     public User getUser(int id) {
         User user = null;
         String sql = "SELECT * FROM users WHERE id = ?";
-        return jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(User.class), 1);
+        return jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(User.class), id);
     }
 }

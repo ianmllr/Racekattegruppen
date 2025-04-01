@@ -4,6 +4,8 @@ import jakarta.servlet.http.HttpSession;
 import org.example.racekattegruppen.Model.User;
 import org.example.racekattegruppen.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -65,12 +67,14 @@ public class UserController {
         return "edit";
     }
 
-    @DeleteMapping("/edit")
-    public String deleteUser(@ModelAttribute User user, HttpSession session, Model model) {
-        userService.deleteUser(user);
-        session.invalidate();
-        return "redirect:/index";
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<String> deleteUser(@ModelAttribute User user, @PathVariable int id, Model model) {
+        System.out.println(user);
+        boolean isDeleted = userService.deleteUser(user);
+        if (isDeleted) {
+            return ResponseEntity.status(HttpStatus.OK).body("Deleted");
+        } else {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
     }
-
-
 }

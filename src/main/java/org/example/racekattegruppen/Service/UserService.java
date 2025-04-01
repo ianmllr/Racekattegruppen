@@ -42,8 +42,8 @@ public class UserService {
     }
 
 
-    public void deleteUser(User user) {
-        racekatteRepo.deleteUser(user);
+    public boolean deleteUser(User user) {
+        return racekatteRepo.deleteUser(user);
     }
 
 
@@ -55,5 +55,4 @@ public class UserService {
     public User getUser(int id) {
         return racekatteRepo.getUser(id);
     }
-
 }

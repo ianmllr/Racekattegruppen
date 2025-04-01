@@ -12,8 +12,25 @@
     Kodeord: <input type="password" th:field="*{password}"><br>
     <button type="submit">Opdater brugerinfo</button>
 </form>
+<button th:onclick="'deleteUser(' + ${id} + ');'">Slet bruger</button>
 
-
+<script>
+    function deleteUser(id) {
+        if (confirm('Er du sikker på du vil slette bruger?')) {
+            fetch('/delete/' + id, {
+                method: 'DELETE'
+            }).then(response => {
+                console.log(response)
+                if (response.status === 200) {
+                    alert('Bruger slettet!');
+                    window.location.replace("/");
+                } else {
+                    alert('Kan ikke slette bruger.');
+                }
+            });
+        }
+    }
+</script>
 
 </body>
 </html>
