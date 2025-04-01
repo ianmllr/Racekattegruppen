@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Edit</title>
+    <link rel="stylesheet" href="/mystyle.css">
 </head>
 <body>
+<h1>Rediger bruger</h1>
 <form th:action="@{/edit}" th:object="${user}" th:method="post">
     <input type="hidden" th:field="*{id}">
-    Navn: <input type="text" th:field="*{username}"><br>
-    Email: <input type="email" th:field="*{email}"><br>
-    Kodeord: <input type="password" th:field="*{password}"><br>
+    Navn: <input type="text" th:field="*{username}"><br><br>
+    Email: <input type="email" th:field="*{email}"><br><br>
+    Kodeord: <input type="password" th:field="*{password}"><br><br>
     <button type="submit">Opdater brugerinfo</button>
 </form>
 <button th:onclick="'deleteUser(' + ${id} + ');'">Slet bruger</button>
