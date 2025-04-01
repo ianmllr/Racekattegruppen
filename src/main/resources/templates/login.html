@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="mystyle.css">
     <meta charset="UTF-8">
     <title>Racekatteklubben - Log ind</title>
+
 </head>
 <body>
-
-
+<h1>Login</h1>
+<br>
+<br>
+<br>
 <form th:action="@{/login}" th:object="${user}" method="post">
     <label for="email">
         Indtast email:

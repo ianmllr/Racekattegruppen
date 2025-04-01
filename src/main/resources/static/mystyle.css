@@ -3,12 +3,18 @@ body {
     opacity: 0.6;
 }
 h1 {
-    font-family: "Verdana";
+    font-family: Verdana, serif;
     font-size: 50px;
     text-align: center;
 }
 form {
-    font-family: Verdana;
+    font-family: Verdana, serif;
     font-size: 20px;
     text-align: center;
+}
+button {
+    font-family: Verdana, serif;
+    font-size: 20px;
+    display: block;
+    margin: 100px auto 0;
 }

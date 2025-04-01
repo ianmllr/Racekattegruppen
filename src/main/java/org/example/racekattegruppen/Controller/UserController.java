@@ -31,19 +31,6 @@ public class UserController {
         }
     }
 
-//    @PostMapping("/index")
-//    public String loginUser(@ModelAttribute User user, HttpSession session, Model model) {
-//        User loggedInUser = userService.login(user.getEmail(), user.getPassword());
-//        if (loggedInUser != null) {
-//            session.setAttribute("currentUser", loggedInUser);
-//            return "redirect:/menu";
-//        } else {
-//            model.addAttribute("error", "Forkert email eller password");
-//            return "index";
-//        }
-//    }
-
-
     @GetMapping("/edit/{id}")
     public String editUser(@PathVariable int id, Model model) {
         model.addAttribute("user", userService.getUser(id));

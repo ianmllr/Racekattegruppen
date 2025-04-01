@@ -1,7 +1,10 @@
 package org.example.racekattegruppen.Controller;
 
+import jakarta.servlet.http.HttpSession;
 import org.example.racekattegruppen.Database.RacekatteRepo;
 import org.example.racekattegruppen.Model.Racekat;
+import org.example.racekattegruppen.Model.User;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,10 +16,10 @@ import java.util.List;
 @Controller
 public class MenuController {
 
-    RacekatteRepo racekatteRepo;
-
     @GetMapping("/menu")
-    public String getMenu(Model model) {
+    public String getMenu(Model model, HttpSession session) {
+        User user = (User) session.getAttribute("currentUser");
+        model.addAttribute("user", user);
         return "menu";
     }
 
