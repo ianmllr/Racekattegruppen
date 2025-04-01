@@ -14,16 +14,17 @@ public class UserController {
     @Autowired
     private UserService userService = new UserService();
 
+    // Registrering
     @GetMapping("/register")
-    public String showRegister(Model model) {
+    public String getRegister(Model model) {
         model.addAttribute("user", new User());
         return "register";
     }
 
     @PostMapping("/register")
-    public String registerUser(@ModelAttribute User user, Model model, HttpSession session) {
+    public String registerUser(@ModelAttribute User user, HttpSession session, Model model) {
         if (userService.register(user)) {
-            session.setAttribute("user", user);
+            session.setAttribute("currentUser", user);
             return "redirect:/menu";
         }
         else {
@@ -32,6 +33,26 @@ public class UserController {
         }
     }
 
+    // Login
+    @GetMapping("/login")
+    public String getLogin(Model model) {
+        model.addAttribute("user", new User());
+        return "login";
+    }
+
+    @PostMapping("/login")
+    public String login(@ModelAttribute User user, HttpSession session, Model model) {
+        User loggedInUser = userService.login(user.getEmail(), user.getPassword());
+        if (loggedInUser != null) {
+            session.setAttribute("currentUser", loggedInUser);
+            return "redirect:/menu";
+        } else {
+            model.addAttribute("error", "Forkert email eller password");
+            return "index";
+        }
+    }
+
+    // edit, update osv
     @GetMapping("/edit/{id}")
     public String editUser(@PathVariable int id, Model model) {
         model.addAttribute("user", userService.getUser(id));

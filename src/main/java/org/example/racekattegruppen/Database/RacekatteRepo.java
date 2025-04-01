@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import javax.sql.DataSource;
 import java.util.List;
 
 @Repository
@@ -15,11 +16,6 @@ public class RacekatteRepo {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
-
-    public RacekatteRepo(JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
-    }
-
 
     // racekatte metoder
     public void createRacekat(Racekat racekat) {

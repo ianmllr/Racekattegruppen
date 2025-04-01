@@ -1,6 +1,7 @@
 package org.example.racekattegruppen.Service;
 
 import org.example.racekattegruppen.Database.RacekatteRepo;
+import org.example.racekattegruppen.Model.Racekat;
 import org.example.racekattegruppen.Model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,8 +12,7 @@ import java.util.List;
 
 @Service
 public class UserService {
-
-    @Autowired
+@Autowired
     private RacekatteRepo racekatteRepo;
 
     private User user;
@@ -35,6 +35,10 @@ public class UserService {
         String hashed = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
         user.setPassword(hashed);
         return racekatteRepo.createUser(user);
+    }
+
+    public List<Racekat> readRacekatte() {
+        return racekatteRepo.readRacekatte();
     }
 
 
