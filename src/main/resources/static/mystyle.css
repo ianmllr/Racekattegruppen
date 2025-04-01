@@ -1,0 +1,14 @@
+body {
+    background-color: lightslategrey;
+    opacity: 0.6;
+}
+h1 {
+    font-family: "Verdana";
+    font-size: 50px;
+    text-align: center;
+}
+form {
+    font-family: Verdana;
+    font-size: 20px;
+    text-align: center;
+}
