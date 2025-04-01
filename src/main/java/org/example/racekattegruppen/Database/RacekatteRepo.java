@@ -25,12 +25,12 @@ public class RacekatteRepo {
 
     public List<Racekat> readRacekatte() {
         String sql = "SELECT * FROM racekat";
-        return jdbcTemplate.query(sql, (rs, rowNum) -> new Racekat(rs.getInt("id"), rs.getString("navn"), rs.getString("race"), rs.getString("description"), rs.getInt("age")));
+        return jdbcTemplate.query(sql, (rs, rowNum) -> new Racekat(rs.getInt("id"), rs.getString("name"), rs.getString("race"), rs.getString("description"), rs.getInt("age")));
     }
 
     public Racekat readRacekat(int id) {
         String sql = "SELECT * FROM racekat WHERE id = ?";
-        return jdbcTemplate.queryForObject(sql, (rs, rowNum) -> new Racekat(rs.getInt("id"), rs.getString("navn"), rs.getString("race"), rs.getString("description"), rs.getInt("age")), id);
+        return jdbcTemplate.queryForObject(sql, (rs, rowNum) -> new Racekat(rs.getInt("id"), rs.getString("name"), rs.getString("race"), rs.getString("description"), rs.getInt("age")), id);
     }
 
     public void updateRacekat(Racekat racekat) {

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="mystyle.css">
+    <link rel="stylesheet" href="menustyle.css">
     <meta charset="UTF-8">
     <title>Racekatteklubben</title>
 </head>
@@ -11,8 +11,12 @@
 
 <h2>Dine katte:</h2>
 
-<div th:each="racekat : ${racekatte}">
-    <p th:text="${racekat.name}"></p>
+<div id="racekatteliste" th:each="racekat : ${racekatte}">
+    <p th:text="${racekat.name} + ' (' + ${racekat.age} + ' år)'">Navn og alder</p>
+    <p th:text="'Race: ' + ${racekat.race}"></p>
+    <p th:text="'Beskrivelse: ' + ${racekat.description}"></p>
+    <button><a th:href="@{/editcat/{id}(id=${racekat.id})}">Rediger</a></button>
+    <br>
 </div>
 
 

@@ -1,0 +1,19 @@
+body {
+    background-color: lightslategrey;
+    opacity: 0.6;
+}
+h1 {
+    font-family: Verdana, serif;
+    font-size: 50px;
+    text-align: center;
+}
+h2 {
+    font-family: Verdana, serif;
+    font-size: 35px;
+    text-align: center;
+}
+#racekatteliste {
+    font-family: Verdana, serif;
+    font-size: 20px;
+    text-align: center;
+}

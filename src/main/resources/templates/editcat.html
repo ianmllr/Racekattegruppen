@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rediger racekat</title>
+</head>
+<body>
+<form th:object="${racekat}" th:action="@{/editcat/{id}(id=${racekat.id})}" method="post">
+    <label for="name">Navn:</label>
+    <input type="text" id="name" name="name" th:value="${racekat.name}" required><br>
+    <label for="age">Alder:</label>
+    <input type="number" id="age" name="age" th:value="${racekat.age}" required><br>
+    <label for="race">Race:</label>
+    <input type="text" id="race" name="race" th:value="${racekat.race}" required><br>
+    <label for="description">Beskrivelse:</label>
+    <input type="text" id="description" name="description" th:value="${racekat.description}" required><br>
+    <input type="submit" value="Opdater">
+</form>
+
+
+
+</body>
+</html>

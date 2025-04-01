@@ -10,6 +10,9 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.annotation.ModelAndViewResolver;
 import java.util.List;
@@ -30,6 +33,27 @@ public class MenuController {
 
         return "menu";
     }
+
+    @GetMapping("/editcat/{id}")
+    public String getEditCat(Model model, HttpSession session, @PathVariable int id) {
+        User user = (User) session.getAttribute("currentUser");
+        model.addAttribute("user", user);
+        Racekat racekat = userService.readRacekat(id);
+        model.addAttribute("racekat", racekat);
+        return "editcat";
+    }
+
+    @PostMapping("/editcat/{id}")
+    public String postEditCat(@ModelAttribute Racekat racekat, Model model, HttpSession session, @PathVariable int id) {
+        User user = (User) session.getAttribute("currentUser");
+        model.addAttribute("user", user);
+        model.addAttribute("racekat", racekat);
+        userService.updateRacekat(racekat);
+        return "redirect:/menu";
+    }
+
+
+
 
 
 

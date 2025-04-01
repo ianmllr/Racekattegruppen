@@ -27,7 +27,6 @@ public class UserService {
         }
     }
 
-
     public Boolean register(User user) {
         if (racekatteRepo.readUserByEmail(user.getEmail()) != null) {
             return false;
@@ -37,10 +36,22 @@ public class UserService {
         return racekatteRepo.createUser(user);
     }
 
+    // racekatte metoder
+
+    public Racekat readRacekat(int id) {
+        return racekatteRepo.readRacekat(id);
+    }
+
     public List<Racekat> readRacekatte() {
         return racekatteRepo.readRacekatte();
     }
 
+    public void updateRacekat(Racekat racekat) {
+        racekatteRepo.updateRacekat(racekat);
+    }
+
+
+    // user metoder
 
     public boolean deleteUser(User user) {
         return racekatteRepo.deleteUser(user);
