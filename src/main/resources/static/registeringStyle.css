@@ -1,14 +1,22 @@
 body {
-    background: linear-gradient(#FF8008, #FFC837) no-repeat fixed;
+    background-image: url("https://img.freepik.com/free-vector/cat-lover-pattern-background-design_53876-100662.jpg?t=st=1743496987~exp=1743500587~hmac=8ccb66dcaf444c6cfc95d53300f43d37912102af6b0b864b27a0d2e4bc1b583e&w=1480");
+    background-attachment: fixed;
+    background-size: auto 100%;
+    background-position: center;
     padding-top: 100px;
+}
+h1 {
+    font-family: Papyrus, Serif;
+    font-weight: bold;
 }
 .box {
     width: 350px;
-    height: 400px;
+    height: 450px;
 
     font-size: 20px;
     text-align: center;
     background: rgba(128,128,128,0.1);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
 
     margin: auto;
     padding: 10px;
@@ -18,15 +26,23 @@ input {
     border: 2px solid black;
     border-radius: 10px;
     margin-bottom: 20px;
-    background: linear-gradient(#FF8008, #FFC837) no-repeat fixed;
-    box-shadow: 2px 2px 5px rgba(255, 165, 0, 0.1);
+    background: navajowhite;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
 }
 button {
     border: 2px solid black;
     border-radius: 10px;
     padding: 5px;
-    background: linear-gradient(#FF8008, #FFC837) no-repeat fixed;
+    background: navajowhite;
+    font-family: Papyrus, Serif;
+    font-weight: bold;
 }
 #idref {
     font-size: 15px;
+    font-family: Papyrus, Serif;
+    font-weight: bold;
+}
+label {
+    font-family: Papyrus, Serif;
+    font-weight: bold;
 }
