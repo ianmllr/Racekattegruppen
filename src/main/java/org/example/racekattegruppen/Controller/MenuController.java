@@ -23,6 +23,7 @@ public class MenuController {
     @Autowired
     UserService userService;
 
+
     @GetMapping("/menu")
     public String getMenu(Model model, HttpSession session) {
         User user = (User) session.getAttribute("currentUser");
@@ -51,6 +52,26 @@ public class MenuController {
         return "redirect:/menu";
     }
 
+    @GetMapping("/newcat")
+    public String getNewCat(Model model, HttpSession session) {
+        User user = (User) session.getAttribute("currentUser");
+        model.addAttribute("user", user);
+
+        Racekat racekat = new Racekat();
+        model.addAttribute("racekat", racekat);
+
+        return "newcat";
+    }
+
+    @PostMapping("/newcat")
+    public String postNewCat(@ModelAttribute Racekat racekat, Model model, HttpSession session) {
+        User user = (User) session.getAttribute("currentUser");
+        model.addAttribute("user", user);
+        model.addAttribute("racekat", racekat);
+        racekat.setUserID(user.getId());
+        userService.createRacekat(racekat);
+        return "redirect:/menu";
+    }
 
 
 

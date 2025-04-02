@@ -54,6 +54,10 @@ public class UserService {
 
     // racekatte metoder
 
+    public void createRacekat(Racekat racekat) {
+        racekatteRepo.createRacekat(racekat);
+    }
+
     public Racekat readRacekat(int id) {
         return racekatteRepo.readRacekat(id);
     }

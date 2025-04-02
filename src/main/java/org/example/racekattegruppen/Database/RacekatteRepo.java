@@ -8,7 +8,6 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import javax.sql.DataSource;
 import java.util.List;
 
 @Repository
@@ -19,28 +18,28 @@ public class RacekatteRepo {
 
     // racekatte metoder
     public void createRacekat(Racekat racekat) {
-        String sql = "INSERT INTO racekat (id, name, race, description, age, picture) VALUES (?, ?, ?, ?, ?, ?)";
-        jdbcTemplate.update(sql, racekat.getId(), racekat.getName(), racekat.getRace(), racekat.getDescription(), racekat.getAge(), racekat.getPicture());
+        String sql = "INSERT INTO racekat (id, name, race, description, age, picture, userID) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        jdbcTemplate.update(sql, racekat.getId(), racekat.getName(), racekat.getRace(), racekat.getDescription(), racekat.getAge(), racekat.getPicture(), racekat.getUserID());
     }
 
     public List<Racekat> readRacekatte() {
         String sql = "SELECT * FROM racekat";
-        return jdbcTemplate.query(sql, (rs, rowNum) -> new Racekat(rs.getInt("id"), rs.getString("name"), rs.getString("race"), rs.getString("description"), rs.getInt("age"), rs.getString("picture")));
+        return jdbcTemplate.query(sql, (rs, rowNum) -> new Racekat(rs.getInt("id"), rs.getString("name"), rs.getString("race"), rs.getString("description"), rs.getInt("age"), rs.getString("picture"), rs.getInt("userID")));
     }
 
     public Racekat readRacekat(int id) {
         String sql = "SELECT * FROM racekat WHERE id = ?";
-        return jdbcTemplate.queryForObject(sql, (rs, rowNum) -> new Racekat(rs.getInt("id"), rs.getString("name"), rs.getString("race"), rs.getString("description"), rs.getInt("age"), rs.getString("picture")), id);
+        return jdbcTemplate.queryForObject(sql, (rs, rowNum) -> new Racekat(rs.getInt("id"), rs.getString("name"), rs.getString("race"), rs.getString("description"), rs.getInt("age"), rs.getString("picture"), rs.getInt("userID")), id);
     }
 
     public List<Racekat> readRacekatteByOwner(int id) {
         String sql = "SELECT * FROM racekat WHERE userID = ?";
-        return jdbcTemplate.query(sql, (rs, rowNum) -> new Racekat(rs.getInt("id"), rs.getString("name"), rs.getString("race"), rs.getString("description"), rs.getInt("age"), rs.getString("picture")), id);
+        return jdbcTemplate.query(sql, (rs, rowNum) -> new Racekat(rs.getInt("id"), rs.getString("name"), rs.getString("race"), rs.getString("description"), rs.getInt("age"), rs.getString("picture"), rs.getInt("userID")), id);
     }
 
     public void updateRacekat(Racekat racekat) {
         String sql = "UPDATE racekat SET name = ?, race = ?, description = ?, age = ?, picture = ? WHERE id = ?";
-        jdbcTemplate.update(sql, racekat.getName(), racekat.getRace(), racekat.getDescription(), racekat.getAge(), racekat.getPicture(), racekat.getId());
+        jdbcTemplate.update(sql, racekat.getName(), racekat.getRace(), racekat.getDescription(), racekat.getAge(), racekat.getPicture(), racekat.getId(), racekat.getUserID());
     }
 
     public void deleteRacekat(Racekat racekat) {

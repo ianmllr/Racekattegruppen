@@ -10,6 +10,8 @@
 <h1>Velkommen <span th:text="${user.username}">User</span></h1>
 
 <h2>Dine katte:</h2>
+<button id ="newcatbutton"><a th:href="@{/newcat}">Tilføj racekat</a></button>
+
 
 <div id="racekatteliste" th:each="racekat : ${racekatte}">
     <p th:text="${racekat.name} + ' (' + ${racekat.age} + ' år)'">Navn og alder</p>
