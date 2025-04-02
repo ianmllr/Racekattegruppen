@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="menustyle.css">
+    <meta charset="UTF-8">
+    <title>Racekatteklubben</title>
+</head>
+<body>
+
+<h1>Velkommen <span th:text="${user.username}">User</span></h1>
+
+<h2>Dine katte:</h2>
+<button id ="newcatbutton"><a th:href="@{/newcat}">Tilføj racekat</a></button>
+
+
+<div id="racekatteliste" th:each="racekat : ${racekatte}">
+    <p th:text="${racekat.name} + ' (' + ${racekat.age} + ' år)'">Navn og alder</p>
+    <p th:text="'Race: ' + ${racekat.race}"></p>
+    <p th:text="'Beskrivelse: ' + ${racekat.description}"></p>
+    <img id="catpicture" th:src="${racekat.picture}" alt="Billede">
+    <button><a th:href="@{/editcat/{id}(id=${racekat.id})}">Rediger</a></button>
+    <br>
+</div>
+
+
+</body>
+</html>
