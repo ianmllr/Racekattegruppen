@@ -16,6 +16,7 @@
     <label >Indtast dit password</label>
    <br> <input type="password" th:field="*{password}" required><br>
 
+    <div class="error" th:text="${error}"></div>
     <br><button type="submit">Opret Bruger</button><br><br>
     <div id="idref">
         <a href ="/login">Allerede bruger</a>

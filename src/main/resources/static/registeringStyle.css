@@ -11,7 +11,7 @@ h1 {
 }
 .box {
     width: 350px;
-    height: 450px;
+    height: 470px;
 
     font-size: 20px;
     font-weight: bold;
@@ -21,6 +21,7 @@ h1 {
 
     margin: auto;
     padding: 10px;
+
 
 }
 input {
@@ -58,4 +59,8 @@ label {
     text-align: center;
     background: rgba(153, 0, 255, 0.44);
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+}
+.error {
+    font-family: Papyrus, Serif;
+    font-size: 17px;
 }
