@@ -47,3 +47,15 @@ button {
 label {
     font-family: Papyrus, Serif;
 }
+.box1 {
+    position: absolute;
+
+    left: 43%;
+    right: 50%;
+    width: 200px;
+    height: 40px;
+    font-weight: bold;
+    text-align: center;
+    background: rgba(153, 0, 255, 0.44);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+}

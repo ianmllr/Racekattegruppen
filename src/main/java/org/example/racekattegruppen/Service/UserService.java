@@ -42,12 +42,10 @@ public class UserService {
         return racekatteRepo.deleteUser(user);
     }
 
-    public String updateUser(User user) {
+    public boolean updateUser(User user) {
         String hashed = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
         user.setPassword(hashed);
-        racekatteRepo.updateUser(user);
-        return user.getUsername();
-
+        return racekatteRepo.updateUser(user);
     }
 
     public User getUser(int id) {

@@ -6,6 +6,13 @@
     <link rel="stylesheet" href="/registeringStyle.css">
 </head>
 <body>
+<div class="box1" th:if="${updated}">
+    <p>Bruger opdateret</p>
+</div>
+<div class="box1" th:if="${updated == false}">
+    <p>Bruger ikke opdateret, prøv igen.</p>
+</div>
+
 <div class="box">
 <h1>Rediger bruger</h1>
 <form th:action="@{/edit}" th:object="${user}" th:method="post">

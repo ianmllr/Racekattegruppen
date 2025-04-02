@@ -62,8 +62,10 @@ public class UserController {
     }
 
     @PostMapping("/edit")
-    public String updateUser(@ModelAttribute User user){
-        String updated = userService.updateUser(user);
+    public String updateUser(@ModelAttribute User user, Model model) {
+        System.out.println(user.getPassword());
+        boolean updated = userService.updateUser(user);
+        model.addAttribute("updated", updated);
         return "edit";
     }
 

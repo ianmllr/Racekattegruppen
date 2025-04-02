@@ -78,10 +78,15 @@ public class RacekatteRepo {
        }
     }
 
-    public String updateUser(User user) {
+    public boolean updateUser(User user) {
         String sql = "UPDATE users SET username = ?, email = ?, password = ? WHERE id = ?";
-        jdbcTemplate.update(sql, user.getUsername(), user.getEmail(), user.getPassword(), user.getId());
-        return "User updated";
+        int update = jdbcTemplate.update(sql, user.getUsername(), user.getEmail(), user.getPassword(), user.getId());
+        if (update == 1) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     public boolean deleteUser(User user) {
