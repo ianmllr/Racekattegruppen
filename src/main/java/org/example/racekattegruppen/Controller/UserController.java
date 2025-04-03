@@ -55,9 +55,9 @@ public class UserController {
     }
 
     // edit, update osv
-    @GetMapping("/edit/{id}")
-    public String editUser(@PathVariable int id, Model model) {
-        model.addAttribute("user", userService.getUser(id));
+    @GetMapping("/edit")
+    public String editUser(Model model, HttpSession session) {
+        model.addAttribute("user", session.getAttribute("currentUser"));
         return "edit";
     }
 
