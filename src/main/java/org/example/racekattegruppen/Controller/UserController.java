@@ -50,7 +50,7 @@ public class UserController {
             return "redirect:/menu";
         } else {
             model.addAttribute("error", "Forkert email eller password");
-            return "index";
+            return "login";
         }
     }
 

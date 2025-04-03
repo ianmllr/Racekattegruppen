@@ -4,26 +4,27 @@
     <link rel="stylesheet" href="mystyle.css">
     <meta charset="UTF-8">
     <title>Racekatteklubben - Log ind</title>
-
 </head>
 <body>
+<div class="box">
+<div id="h12">
 <h1>Login</h1>
-<br>
-<br>
-<br>
+</div>
 <form th:action="@{/login}" th:object="${user}" method="post">
     <label for="email">
         Indtast email:
     </label>
+    <br>
     <input type="text" id ="email" name="email" th:field="*{email}" required>
+    <br>
     <label for ="password">
         Indtast password:
     </label>
+    <br>
     <input type="password" id="password" name="password" th:field="*{password}" required>
     <button type="submit">Log ind</button>
+    <div th:if="${error}" th:text="${error}" style="color:deeppink;"><p>Fejl</p></div>
 </form>
-
-<p th:if="${error}" th:text="${error}" style="color:deeppink;"></p>
-
+</div>
 </body>
 </html>
