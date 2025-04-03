@@ -19,19 +19,20 @@
     <p th:text="'Race: ' + ${racekat.race}"></p>
     <p th:text="'Beskrivelse: ' + ${racekat.description}"></p>
     <img id="catpicture" th:src="${racekat.picture}" alt="Billede">
+
+    <div class="button-container">
     <button><a th:href="@{/editcat/{id}(id=${racekat.id})}">Rediger</a></button>
 
     <form th:action="@{/menu/delete}" th:method="post">
         <input type="hidden" name="id" th:value="${racekat.id}">
         <button type="submit">Slet racekat</button>
     </form>
-
-    <br>
+    </div>
 </div>
-
+<div class="BtnLogUd">
 <form action="/menu" method="post">
     <button type="submit">Log ud</button>
 </form>
-
+</div>
 </body>
 </html>

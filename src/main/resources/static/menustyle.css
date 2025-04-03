@@ -32,10 +32,20 @@ h2 {
 }
 #newcatbutton
 {
-    position: absolute;
-    top: 150px;
-    right: 500px;
+    width: 200px; /* Adjust the button's width */
+    height: 50px; /* Adjust the button's height */
+    padding: 10px; /* Adds space inside the button */
+    font-size: 20px; /* Adjusts the text size */
+    border: 2px solid black;
+    border-radius: 10px;
+    background: navajowhite;
+    font-family: Papyrus, Serif;
+    font-weight: bold;
+    text-align: center;
+    margin: 20px auto;
+    display: block;
 }
+
 .racekatteliste-box {
     background-color: #808080; /* grey background */
     padding: 10px;
@@ -44,4 +54,65 @@ h2 {
     margin-right: 400px;
     margin-left: 400px;
     opacity: 90%;
+
 }
+#members {
+    width: 200px; /* Adjust the button's width */
+    height: 50px; /* Adjust the button's height */
+    padding: 10px; /* Adds space inside the button */
+    font-size: 20px; /* Adjusts the text size */
+    border: 2px solid black;
+    border-radius: 10px;
+    background: navajowhite;
+    font-family: Papyrus, Serif;
+    font-weight: bold;
+    text-align: center;
+    margin: 20px auto;
+    display: block;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
+button {
+    width: 150px; /* Adjust the button's width */
+    height: 35px; /* Adjust the button's height */
+    padding: 10px; /* Adds space inside the button */
+    font-size: 20px; /* Adjusts the text size */
+    border: 2px solid black;
+    border-radius: 10px;
+    background: navajowhite;
+    font-family: Papyrus, Serif;
+    font-weight: bold;
+    text-align: center;
+    margin: 20px auto;
+    display: block;
+    line-height: 15px;
+}
+
+.BtnLogUd button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    margin: 0;
+    width: 150px;
+    height: 35px;
+    text-align: center;
+    line-height: 15px;
+    display: inline-block;
+}
+.button-container {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+
+}
+.button-container button {
+    display: inline-block;
+    margin: 0;
+    padding: 10px;
+}
+
+
