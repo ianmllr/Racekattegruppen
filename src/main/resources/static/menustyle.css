@@ -114,5 +114,20 @@ button {
     margin: 0;
     padding: 10px;
 }
+#edit
+{
+    width: 200px; /* Adjust the button's width */
+    height: 50px; /* Adjust the button's height */
+    padding: 10px; /* Adds space inside the button */
+    font-size: 20px; /* Adjusts the text size */
+    border: 2px solid black;
+    border-radius: 10px;
+    background: navajowhite;
+    font-family: Papyrus, Serif;
+    font-weight: bold;
+    text-align: center;
+    margin: 20px auto;
+    display: block;
+}
 
 
