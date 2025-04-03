@@ -97,6 +97,16 @@ public class RacekatteRepo {
             return false;
         }
     }
+    public boolean updateUserNoPass(User user) {
+        String sql = "UPDATE users SET username = ?, email = ? WHERE id = ?";
+        int update = jdbcTemplate.update(sql, user.getUsername(), user.getEmail(), user.getId());
+        if (update == 1) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 
     public boolean deleteUser(User user) {
         String sql = "DELETE FROM users WHERE id = ?";

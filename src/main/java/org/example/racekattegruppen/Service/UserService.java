@@ -43,9 +43,14 @@ public class UserService {
     }
 
     public boolean updateUser(User user) {
-        String hashed = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
-        user.setPassword(hashed);
-        return racekatteRepo.updateUser(user);
+        if(user.getPassword().isEmpty()) {
+            return racekatteRepo.updateUserNoPass(user);
+        }
+        else {
+            String hashed = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
+            user.setPassword(hashed);
+            return racekatteRepo.updateUser(user);
+        }
     }
 
     public User getUser(int id) {
@@ -81,7 +86,4 @@ public class UserService {
     public void deleteRacekat(Racekat racekat) {
         racekatteRepo.deleteRacekat(racekat);
     }
-
-
-
 }
