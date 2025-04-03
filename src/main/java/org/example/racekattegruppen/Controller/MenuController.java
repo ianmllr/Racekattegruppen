@@ -1,19 +1,13 @@
 package org.example.racekattegruppen.Controller;
 
 import jakarta.servlet.http.HttpSession;
-import org.example.racekattegruppen.Config.SecurityConfig;
-import org.example.racekattegruppen.Database.RacekatteRepo;
 import org.example.racekattegruppen.Model.Racekat;
 import org.example.racekattegruppen.Model.User;
 import org.example.racekattegruppen.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.annotation.ModelAndViewResolver;
 import java.util.List;
 
 @Controller

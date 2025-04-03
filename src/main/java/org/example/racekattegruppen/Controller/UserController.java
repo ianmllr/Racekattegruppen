@@ -27,6 +27,7 @@ public class UserController {
     public String registerUser(@ModelAttribute User user, HttpSession session, Model model) {
         if (userService.register(user)) {
             session.setAttribute("currentUser", user);
+            System.out.println(user.getUsername() + "registreret"); // debugging
             return "redirect:/menu";
         }
         else {
@@ -63,11 +64,12 @@ public class UserController {
     }
 
     @PostMapping("/edit")
-    public String updateUser(@ModelAttribute User user, Model model) {
+    public String updateUser(@ModelAttribute User user, Model model, HttpSession session) {
         System.out.println(user.getPassword());
         boolean updated = userService.updateUser(user);
+        session.setAttribute("currentUser", user);
         model.addAttribute("updated", updated);
-        return "edit";
+        return "redirect:/menu";
     }
 
     @DeleteMapping("/delete/{id}")
