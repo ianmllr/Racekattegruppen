@@ -11,10 +11,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.annotation.ModelAndViewResolver;
 import java.util.List;
@@ -46,13 +43,16 @@ public class MenuController {
     }
 
     @PostMapping("/editcat/{id}")
-    public String postEditCat(@ModelAttribute Racekat racekat, Model model, HttpSession session, @PathVariable int id) {
+    public String postEditCat(@PathVariable int id, @ModelAttribute Racekat racekat, Model model, HttpSession session) {
+        racekat.setId(id); 
         User user = (User) session.getAttribute("currentUser");
         model.addAttribute("user", user);
         model.addAttribute("racekat", racekat);
+        racekat.setUserID(user.getId());
         userService.updateRacekat(racekat);
         return "redirect:/menu";
     }
+
 
     @GetMapping("/newcat")
     public String getNewCat(Model model, HttpSession session) {
@@ -72,6 +72,13 @@ public class MenuController {
         model.addAttribute("racekat", racekat);
         racekat.setUserID(user.getId());
         userService.createRacekat(racekat);
+        return "redirect:/menu";
+    }
+
+    @PostMapping("/menu/delete")
+    public String deleteCat(@RequestParam("id") int id){
+        Racekat racekat = userService.readRacekat(id);
+        userService.deleteRacekat(racekat);
         return "redirect:/menu";
     }
 

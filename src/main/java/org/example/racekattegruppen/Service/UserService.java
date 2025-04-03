@@ -78,6 +78,10 @@ public class UserService {
         return racekatteRepo.readAllUsers();
     }
 
+    public void deleteRacekat(Racekat racekat) {
+        racekatteRepo.deleteRacekat(racekat);
+    }
+
 
 
 }

@@ -51,6 +51,21 @@ button {
     padding: 10px;
 
 }
+
+#newcatbox {
+    width: 300px;
+    height: 600px;
+
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    background: rgba(128,128,128,0.8);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+
+    margin: 50px auto auto;
+    padding: 10px;
+
+}
 #h12 {
     h1 {
         padding-top: 10px;

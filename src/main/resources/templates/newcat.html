@@ -7,7 +7,7 @@
 </head>
 <body>
 <h1>Ny racekat</h1>
-<div class="box">
+<div id="newcatbox">
     <h1>Indtast oplysninger</h1>
     <form th:action="@{/newcat}" th:object="${racekat}" th:method="post">
         <label>Indtast kattens navn</label>

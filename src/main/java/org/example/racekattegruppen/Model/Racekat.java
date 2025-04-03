@@ -62,4 +62,8 @@ public class Racekat {
     public void setPicture(String picture) {
         this.picture = picture;
     }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 }

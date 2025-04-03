@@ -14,12 +14,18 @@
 <button id="members"><a th:href="@{/members}">Se medlemmer</a></button>
 
 
-<div id="racekatteliste" th:each="racekat : ${racekatte}">
+<div id="racekatteliste" th:each="racekat : ${racekatte}" class="racekatteliste-box">
     <p th:text="${racekat.name} + ' (' + ${racekat.age} + ' år)'">Navn og alder</p>
     <p th:text="'Race: ' + ${racekat.race}"></p>
     <p th:text="'Beskrivelse: ' + ${racekat.description}"></p>
     <img id="catpicture" th:src="${racekat.picture}" alt="Billede">
     <button><a th:href="@{/editcat/{id}(id=${racekat.id})}">Rediger</a></button>
+
+    <form th:action="@{/menu/delete}" th:method="post">
+        <input type="hidden" name="id" th:value="${racekat.id}">
+        <button type="submit">Slet racekat</button>
+    </form>
+
     <br>
 </div>
 
