@@ -74,6 +74,10 @@ public class UserService {
         racekatteRepo.updateRacekat(racekat);
     }
 
+    public List<User> getUsers() {
+        return racekatteRepo.readAllUsers();
+    }
+
 
 
 }

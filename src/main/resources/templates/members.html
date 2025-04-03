@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Medlemmer</title>
+</head>
+<body>
+<table>
+    <tr>
+        <th>ID</th><th>Navn</th><th>Se info</th>
+    </tr>
+<tr th:each="member : ${members}">
+    <td th:text="${member.id}"></td>
+    <td th:text="${member.username}"></td>
+
+    <td>
+        <a th:href="@{'/members/showMember/' + ${member.id}}">Se medlem</a>
+    </td>
+</tr>
+
+</table>
+
+
+
+</body>
+</html>

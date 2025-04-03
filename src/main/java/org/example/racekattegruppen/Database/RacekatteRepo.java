@@ -47,6 +47,7 @@ public class RacekatteRepo {
         jdbcTemplate.update(sql, racekat.getId());
     }
 
+
     ////////////////
 
     // user metoder
