@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import java.util.Arrays;
@@ -116,6 +117,7 @@ public class RacekatteRepo {
 
     public User getUser(int id) {
         String sql = "SELECT * FROM users WHERE id = ?";
-        return jdbcTemplate.queryForObject(sql, (rs, rowNum) -> new User(rs.getInt("id"), rs.getString("username"), rs.getString("email"), rs.getString("password")));
+        //return jdbcTemplate.queryForObject(sql, (rs, rowNum) -> new User(rs.getInt("id"), rs.getString("username"), rs.getString("email"), rs.getString("password")));
+        return jdbcTemplate.queryForObject(sql, new Object[]{id}, (rs, rowNum) -> new User(rs.getInt("id"), rs.getString("username"), rs.getString("email"), rs.getString("password")));
     }
 }

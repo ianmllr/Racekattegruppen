@@ -11,6 +11,7 @@
     <th>Navn</th><th>Email</th>
     </tr>
 <form th:action="@{/members/showMember}" th:object="${member}" method="get">
+
 <td th:text="${member.username}"></td>
 <td th:text="${member.email}"></td>
 </form>
