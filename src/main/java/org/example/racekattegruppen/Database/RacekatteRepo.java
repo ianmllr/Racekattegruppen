@@ -115,8 +115,7 @@ public class RacekatteRepo {
     }
 
     public User getUser(int id) {
-        User user = null;
         String sql = "SELECT * FROM users WHERE id = ?";
-        return jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(User.class), id);
+        return jdbcTemplate.queryForObject(sql, (rs, rowNum) -> new User(rs.getInt("id"), rs.getString("username"), rs.getString("email"), rs.getString("password")));
     }
 }
