@@ -76,9 +76,10 @@ public class UserController {
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> deleteUser(@ModelAttribute User user, HttpSession session, @PathVariable int id, Model model) {
         session.getAttribute("currentUser");
+        User currentUser = (User) session.getAttribute("currentUser");
         model.addAttribute("currentUser", userService.getUser(id));
-        System.out.println(user.getId());
-        boolean isDeleted = userService.deleteUser(user);
+        System.out.println(currentUser.getId());
+        boolean isDeleted = userService.deleteUser(currentUser);
         if (isDeleted) {
             return ResponseEntity.status(HttpStatus.OK).body("Deleted");
         } else {
