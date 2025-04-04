@@ -70,7 +70,7 @@ public class UserController {
         boolean updated = userService.updateUser(user);
         session.setAttribute("currentUser", user);
         model.addAttribute("updated", updated);
-        return "redirect:/menu";
+        return "edit";
     }
 
     @DeleteMapping("/delete/{id}")

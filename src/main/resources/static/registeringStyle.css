@@ -63,3 +63,17 @@ label {
     font-family: Papyrus, Serif;
     font-size: 17px;
 }
+.BtnTilbage button {
+    font-size: 20px; /* Adjusts the text size */
+    font-family: Papyrus, Serif;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    margin: 40px;
+    width: 150px;
+    height: 35px;
+    text-align: center;
+    line-height: 15px;
+    display: inline-block;
+}
