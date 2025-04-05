@@ -215,6 +215,7 @@ input[type="submit"]:hover {
     box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
 }
 .BtnTilbage {
+    position: fixed;
     font-size: 20px;
     font-family: Papyrus, Serif;
     font-weight: bold;
@@ -225,10 +226,22 @@ input[type="submit"]:hover {
     width: 75px;
     height: 30px;
     text-align: center;
-    line-height: 15px;
     display: inline-block;
+    line-height: 15px;
     text-decoration: none;
     color: black;
+}
+#tilbage {
+    top: 10px;
+    left: 10px;
+    margin: 40px;
+    width: 150px;
+    height: 35px;
+    text-align: center;
+    line-height: 15px;
+    display: inline-block;
+    position: fixed;
+
 }
 .BtnTilbage:hover {
     color: darkred;

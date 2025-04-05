@@ -8,31 +8,31 @@
 <body>
 
 <h1>Velkommen, <span th:text="${user.username}">User</span></h1>
-
 <button id ="newcatbutton"><a th:href="@{/newcat}">Tilføj racekat</a></button>
 <button id="members"><a th:href="@{/members}">Se medlemmer</a></button>
 <button id="edit"><a th:href="@{'/edit/' + ${user.id}}">Rediger din profil</a></button>
 <button id="udstilling"></button>
 
 <h2>Dine katte:</h2>
-<div id="racekatteliste" th:each="racekat : ${racekatte}" class="racekatteliste-box">
-    <p th:text="${racekat.name} + ' (' + ${racekat.age} + ' år)'">Navn og alder</p>
-    <p th:text="'Race: ' + ${racekat.race}"></p>
-    <p th:text="'Beskrivelse: ' + ${racekat.description}"></p>
-    <img id="catpicture" th:src="${racekat.picture}" alt="Billede">
-    <div class="button-container">
-
-    <button><a th:href="@{/editcat/{id}(id=${racekat.id})}">Rediger</a></button>
-        <form th:action="@{/menu/delete}" th:method="post">
-            <input type="hidden" name="id" th:value="${racekat.id}">
-            <button type="submit">Slet racekat</button>
-        </form>
+<div class="racekatteliste-container">
+    <div id="racekatteliste" th:each="racekat : ${racekatte}" class="racekatteliste-box">
+        <p th:text="${racekat.name} + ' (' + ${racekat.age} + ' år)'">Navn og alder</p>
+        <p th:text="'Race: ' + ${racekat.race}"></p>
+        <p th:text="'Beskrivelse: ' + ${racekat.description}"></p>
+        <img id="catpicture" th:src="${racekat.picture}" alt="Billede">
+        <div class="button-container">
+            <button><a th:href="@{/editcat/{id}(id=${racekat.id})}">Rediger</a></button>
+            <form th:action="@{/menu/delete}" th:method="post">
+                <input type="hidden" name="id" th:value="${racekat.id}">
+                <button type="submit">Slet racekat</button>
+            </form>
+        </div>
     </div>
 </div>
 
 <div class="BtnLogUd">
 <form action="/menu" method="post">
-    <button type="submit">Log ud</button>
+    <button id="logud" type="submit">Log ud</button>
 </form>
 </div>
 </body>

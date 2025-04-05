@@ -36,10 +36,10 @@ h2 {
 }
 #newcatbutton
 {
-    width: 200px; /* Adjust the button's width */
-    height: 50px; /* Adjust the button's height */
-    padding: 10px; /* Adds space inside the button */
-    font-size: 20px; /* Adjusts the text size */
+    width: 200px;
+    height: 50px;
+    padding: 10px;
+    font-size: 20px;
     border: 2px solid black;
     border-radius: 10px;
     background: navajowhite;
@@ -54,21 +54,30 @@ h2 {
         transition: all 0.3s ease-in-out;
         cursor: pointer;
 }
+.racekatteliste-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 10px;
+}
 
 .racekatteliste-box {
+    border-radius: 10px;
     background: antiquewhite;
-    padding: 10px;
     border: 1px solid #666;
-    margin-bottom: 10px;
-    margin-right: 575px;
-    margin-left: 575px;
+    width: calc(33.33% - 20px);
+    margin: 10px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+    box-sizing: border-box;
+    padding: 15px;
+    text-align: center;
 }
 #members {
-    width: 200px; /* Adjust the button's width */
-    height: 50px; /* Adjust the button's height */
-    padding: 10px; /* Adds space inside the button */
-    font-size: 20px; /* Adjusts the text size */
+    width: 200px;
+    height: 50px;
+    padding: 10px;
+    font-size: 20px;
     border: 2px solid black;
     border-radius: 10px;
     background: navajowhite;
@@ -89,10 +98,10 @@ a {
     color: inherit;
 }
 button {
-    width: 150px; /* Adjust the button's width */
-    height: 35px; /* Adjust the button's height */
-    padding: 10px; /* Adds space inside the button */
-    font-size: 20px; /* Adjusts the text size */
+    width: 150px;
+    height: 35px;
+    padding: 10px;
+    font-size: 20px;
     border: 2px solid black;
     border-radius: 10px;
     background: navajowhite;
@@ -120,6 +129,7 @@ button:hover {
     text-align: center;
     line-height: 15px;
     display: inline-block;
+    position: fixed;
 }
 .button-container {
     display: flex;
@@ -136,10 +146,10 @@ button:hover {
 }
 #edit
 {
-    width: 200px; /* Adjust the button's width */
-    height: 50px; /* Adjust the button's height */
-    padding: 10px; /* Adds space inside the button */
-    font-size: 20px; /* Adjusts the text size */
+    width: 200px;
+    height: 50px;
+    padding: 10px;
+    font-size: 20px;
     border: 2px solid black;
     border-radius: 10px;
     background: navajowhite;
