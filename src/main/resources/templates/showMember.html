@@ -1,35 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="/mystyle.css">
     <meta charset="UTF-8">
     <title>Medlem</title>
 </head>
 <body>
 <h1>Medlem</h1>
+<div class="member">
 <table>
     <tr>
-    <th>Navn</th><th>Email</th>
+        <th>Navn:</th>
+        <td th:text="${member.username}"></td>
     </tr>
+    <tr>
+        <th>Email:</th>
+        <td th:text="${member.email}"></td>
+    </tr>
+  </table>
+</div>
 <form th:action="@{/members/showMember}" th:object="${member}" method="get">
-
-<td th:text="${member.username}"></td>
-<td th:text="${member.email}"></td>
 </form>
 </table>
-    <div id="kat">
-        <h1>Katte</h1>
-    </div>
-<table>
-    <tr>
-    <th>Navn</th><th>Alder</th><th>Race</th><th>Beskrivelse</th></th><th>Billede</th>
-    </tr>
-<tr th:each="cat : ${cats}">
-    <td th:text="${cat.name}"></td>
-    <td th:text="${cat.age}"></td>
-    <td th:text="${cat.race}"></td>
-    <td th:text="${cat.description}"></td>
-    <td><img th:src="${cat.picture}" width="100"/></td>
-</tr>
-</table>
+</div>
+
+<h1>Katte</h1>
+<div id="kat">
+    <table>
+        <tr>
+            <th>Navn:</th>
+            <th>Alder:</th>
+            <th>Race:</th>
+            <th>Beskrivelse:</th>
+            <th>Billede:</th>
+        </tr>
+        <tr th:each="cat : ${cats}">
+            <td th:text="${cat.name}"></td>
+            <td th:text="${cat.age}"></td>
+            <td th:text="${cat.race}"></td>
+            <td th:text="${cat.description}"></td>
+            <td><img th:src="${cat.picture}" width="200"/></td>
+        </tr>
+    </table>
+</div>
+<div class="BtnTilbage">
+    <button id="tilbage" type="submit"><a th:href="@{/menu}">Tilbage</a></button>
+</div>
 </body>
 </html>

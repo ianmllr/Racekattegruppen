@@ -12,6 +12,7 @@
 <button id ="newcatbutton"><a th:href="@{/newcat}">Tilføj racekat</a></button>
 <button id="members"><a th:href="@{/members}">Se medlemmer</a></button>
 <button id="edit"><a th:href="@{'/edit/' + ${user.id}}">Rediger din profil</a></button>
+<button id="udstilling"></button>
 
 <h2>Dine katte:</h2>
 <div id="racekatteliste" th:each="racekat : ${racekatte}" class="racekatteliste-box">
@@ -19,8 +20,8 @@
     <p th:text="'Race: ' + ${racekat.race}"></p>
     <p th:text="'Beskrivelse: ' + ${racekat.description}"></p>
     <img id="catpicture" th:src="${racekat.picture}" alt="Billede">
-
     <div class="button-container">
+
     <button><a th:href="@{/editcat/{id}(id=${racekat.id})}">Rediger</a></button>
         <form th:action="@{/menu/delete}" th:method="post">
             <input type="hidden" name="id" th:value="${racekat.id}">
@@ -28,8 +29,6 @@
         </form>
     </div>
 </div>
-
-
 
 <div class="BtnLogUd">
 <form action="/menu" method="post">

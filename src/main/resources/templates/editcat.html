@@ -17,12 +17,12 @@
     <input type="text" id="race" name="race" th:value="${racekat.race}" required><br>
     <label for="description">Beskrivelse:</label>
     <input type="text" id="description" name="description" th:value="${racekat.description}" required><br>
-    <label for="picture">Billede:</label>
+    <label for="picture">Billede url:</label>
     <input type="text" id="picture" name="picture" th:value="${racekat.picture}" required><br>
-    <input type="submit" value="Opdater">
+    <input id="update" type="submit" value="Opdater">
 </form>
-
-
-
+<div class="BtnTilbage">
+    <button id="tilbage" type="submit"><a th:href="@{/menu}">Tilbage</a></button>
+</div>
 </body>
 </html>
