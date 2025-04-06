@@ -28,7 +28,7 @@ public class UserController {
         if (userService.register(user)) {
             session.setAttribute("currentUser", user);
             System.out.println(user.getUsername() + "registreret"); // debugging
-            return "redirect:/menu";
+            return "redirect:/login";
         }
         else {
             model.addAttribute("error", "Email findes allerede");
