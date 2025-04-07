@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="/mystyle.css">
+    <link rel="icon" type="image/png" href="/favicon.png">
     <meta charset="UTF-8">
     <title>Rediger racekat</title>
 </head>
@@ -9,15 +10,15 @@
 <h1>Rediger racekat</h1>
 <form id="editcatform" th:object="${racekat}" th:action="@{/editcat/{id}(id=${racekat.id})}" method="post">
     <input type="hidden" name="id" th:value="${racekat.id}">
-    <label for="name">Navn:</label>
+    <label for="name">Navn:</label><br>
     <input type="text" id="name" name="name" th:value="${racekat.name}" required><br>
-    <label for="age">Alder:</label>
+    <label for="age">Alder:</label><br>
     <input type="number" id="age" name="age" th:value="${racekat.age}" required><br>
-    <label for="race">Race:</label>
+    <label for="race">Race:</label><br>
     <input type="text" id="race" name="race" th:value="${racekat.race}" required><br>
-    <label for="description">Beskrivelse:</label>
+    <label for="description">Beskrivelse:</label><br>
     <input type="text" id="description" name="description" th:value="${racekat.description}" required><br>
-    <label for="picture">Billede url:</label>
+    <label for="picture">Billede url:</label><br>
     <input type="text" id="picture" name="picture" th:value="${racekat.picture}" required><br>
     <input id="update" type="submit" value="Opdater">
 </form>
