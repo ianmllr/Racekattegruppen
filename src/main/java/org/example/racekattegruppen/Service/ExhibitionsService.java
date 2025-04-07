@@ -1,6 +1,6 @@
 package org.example.racekattegruppen.Service;
 
-import org.example.racekattegruppen.Database.ExhibitionRepo;
+import org.example.racekattegruppen.Infrastructure.ExhibitionRepo;
 import org.example.racekattegruppen.Model.Exhibition;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

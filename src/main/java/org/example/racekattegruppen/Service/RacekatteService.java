@@ -1,8 +1,7 @@
 package org.example.racekattegruppen.Service;
 
-import org.example.racekattegruppen.Database.RacekatteRepo;
+import org.example.racekattegruppen.Infrastructure.RacekatteRepo;
 import org.example.racekattegruppen.Model.Racekat;
-import org.example.racekattegruppen.Model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

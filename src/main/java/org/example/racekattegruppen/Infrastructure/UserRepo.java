@@ -1,4 +1,4 @@
-package org.example.racekattegruppen.Database;
+package org.example.racekattegruppen.Infrastructure;
 
 import org.example.racekattegruppen.Model.User;
 import org.springframework.beans.factory.annotation.Autowired;
