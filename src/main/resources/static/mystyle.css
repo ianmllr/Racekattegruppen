@@ -254,7 +254,12 @@ input[type="submit"]:hover {
     line-height: 15px;
     display: inline-block;
     position: fixed;
-
+}
+#h4 {
+    text-align: center;
+    font-family: Papyrus;
+    font-weight: bold;
+    font-size: 20px;
 }
 .BtnTilbage:hover {
     color: darkred;
