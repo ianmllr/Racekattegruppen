@@ -18,6 +18,12 @@ public class UserController {
     @Autowired
     private UserService userService = new UserService();
 
+    @GetMapping("/about")
+    public String getAbout() {
+        return "about";
+    }
+
+
     // Registrering
     @GetMapping("/register")
     public String getRegister(Model model) {
