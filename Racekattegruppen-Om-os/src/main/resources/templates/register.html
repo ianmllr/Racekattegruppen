@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="registeringStyle.css">
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <meta charset="UTF-8">
+    <title>Registrer</title>
+</head>
+<body>
+<div class="box">
+<h1>Indtast oplysninger</h1>
+<form th:action="@{/register}" th:object="${user}" th:method="post">
+    <label>Indtast dit navn</label>
+    <br><input type="text" th:field="*{username}" required><br>
+    <label >Indtast din email</label>
+    <br><input type="email" th:field="*{email}" required><br>
+    <label >Indtast dit password</label>
+   <br> <input type="password" th:field="*{password}" required><br>
+    <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password fejl</div>
+
+    <div class="error" th:text="${error}"></div>
+    <br><button type="submit">Opret Bruger</button><br><br>
+    <div id="idref">
+        <a href ="/login">Allerede bruger</a>
+    </div>
+</form>
+</div>
+<div class="BtnTilbage">
+    <button id="tilbage" type="submit"><a th:href="@{/}">Tilbage</a></button>
+</div>
+
+</body>
+</html>

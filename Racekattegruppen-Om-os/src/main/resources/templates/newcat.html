@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="/mystyle.css">
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <meta charset="UTF-8">
+    <title>Ny racekat</title>
+</head>
+<body>
+<h1>Ny racekat</h1>
+<button id="newcaterror" th:if="${error}" type="submit"><a th:href="@{/newcat}">Fejl! Kilk her for at prøve igen</a></button>
+<div id="newcatbox">
+    <h1>Indtast oplysninger</h1>
+    <form th:action="@{/newcat}" th:object="${racekat}" th:method="post">
+        <label>Indtast kattens navn</label>
+        <br><input type="text" th:field="*{name}" required><br>
+        <label >Indtast kattens alder</label>
+        <br><input type="number" th:field="*{age}" required><br>
+        <label >Indtast kattens race</label>
+        <br><input type="text" th:field="*{race}" required><br>
+        <label >Indtast kattens beskrivelse</label>
+        <br><input type="text" th:field="*{description}" required><br>
+        <label >Indtast kattens billede</label>
+        <br><input type="text" th:field="*{picture}" required><br>
+        <br><button type="submit">Opret kat</button><br><br>
+    </form>
+</div>
+<div class="BtnTilbage">
+    <button id="tilbage" type="submit"><a th:href="@{/menu}">Tilbage</a></button>
+</div>
+</body>
+</html>

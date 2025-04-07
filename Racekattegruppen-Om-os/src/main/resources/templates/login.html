@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="mystyle.css">
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <meta charset="UTF-8">
+    <title>Racekatteklubben - Log ind</title>
+</head>
+<body>
+<br><br><br><br>
+<div class="loginbox">
+<div id="h12">
+<h1>Login</h1>
+</div>
+<form th:action="@{/login}" th:object="${user}" method="post">
+    <label for="email">
+        Indtast email:
+    </label>
+    <br>
+    <input type="text" id ="email" name="email" th:field="*{email}" required>
+    <br>
+    <label for ="password">
+        Indtast password:
+    </label>
+    <br>
+    <input type="password" id="password" name="password" th:field="*{password}" required>
+    <button type="submit">Log ind</button>
+    <div th:if="${error}" th:text="${error}" style="color:deeppink;"><p>Fejl</p></div>
+</form>
+</div>
+<div class="BtnTilbage">
+    <button id="tilbage" type="submit"><a th:href="@{/}">Tilbage</a></button>
+</div>
+</body>
+</html>

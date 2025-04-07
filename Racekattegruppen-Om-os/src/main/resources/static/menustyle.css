@@ -1,0 +1,162 @@
+body {
+    background-image: url('https://img.freepik.com/free-vector/cat-lover-pattern-background-design_53876-100662.jpg?t=st=1743496987~exp=1743500587~hmac=8ccb66dcaf444c6cfc95d53300f43d37912102af6b0b864b27a0d2e4bc1b583e&w=1480');
+    background-attachment: fixed;
+    background-size: auto 100%;
+    background-position: center;
+}
+.background-image {
+
+}
+h1 {
+    font-family: Papyrus, serif;
+    font-size: 50px;
+    text-align: center;
+    font-weight: bold;
+}
+h2 {
+    font-family: Papyrus, serif;
+    font-size: 35px;
+    text-align: center;
+    font-weight: bold;
+}
+#racekatteliste {
+    font-family: Papyrus, serif;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration-color: white;
+}
+#catpicture
+{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 300px;
+    border: 2px solid black;
+}
+#newcatbutton
+{
+    width: 200px;
+    height: 50px;
+    padding: 10px;
+    font-size: 20px;
+    border: 2px solid black;
+    border-radius: 10px;
+    background: navajowhite;
+    font-family: Papyrus, Serif;
+    font-weight: bold;
+    text-align: center;
+    margin: 20px auto;
+    display: block;
+}
+#newcatbutton:hover {
+        color: darkred;
+        transition: all 0.3s ease-in-out;
+        cursor: pointer;
+}
+.racekatteliste-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 10px;
+}
+
+.racekatteliste-box {
+    border-radius: 10px;
+    background: antiquewhite;
+    border: 1px solid #666;
+    width: calc(33.33% - 20px);
+    margin: 10px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+    box-sizing: border-box;
+    padding: 15px;
+    text-align: center;
+}
+#members {
+    width: 200px;
+    height: 50px;
+    padding: 10px;
+    font-size: 20px;
+    border: 2px solid black;
+    border-radius: 10px;
+    background: navajowhite;
+    font-family: Papyrus, Serif;
+    font-weight: bold;
+    text-align: center;
+    margin: 20px auto;
+    display: block;
+}
+#members:hover {
+    color: darkred;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+button {
+    width: 150px;
+    height: 35px;
+    padding: 10px;
+    font-size: 20px;
+    border: 2px solid black;
+    border-radius: 10px;
+    background: navajowhite;
+    font-family: Papyrus, Serif;
+    font-weight: bold;
+    text-align: center;
+    margin: 20px auto;
+    display: block;
+    line-height: 15px;
+    cursor: pointer;
+}
+button:hover {
+    color: darkred;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.BtnLogUd button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    margin: 40px;
+    width: 150px;
+    height: 35px;
+    text-align: center;
+    line-height: 15px;
+    display: inline-block;
+    position: fixed;
+}
+.button-container {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+
+}
+.button-container button {
+    display: inline-block;
+    margin: 0;
+    padding: 10px;
+}
+#edit
+{
+    width: 200px;
+    height: 50px;
+    padding: 10px;
+    font-size: 20px;
+    border: 2px solid black;
+    border-radius: 10px;
+    background: navajowhite;
+    font-family: Papyrus, Serif;
+    font-weight: bold;
+    text-align: center;
+    margin: 20px auto;
+    display: block;
+}
+

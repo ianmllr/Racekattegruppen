@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="registeringStyle.css">
+    <meta charset="UTF-8">
+    <title>Register</title>
+</head>
+<body>
+<div class="box">
+<h1>Indtast oplysninger</h1>
+<form th:action="@{/register}" th:object="${user}" th:method="post">
+    <label>Indtast dit navn</label>
+    <br><input type="text" th:field="*{username}" required><br>
+    <label >Indtast din email</label>
+    <br><input type="email" th:field="*{email}" required><br>
+    <label >Indtast dit password</label>
+   <br> <input type="password" th:field="*{password}" required><br>
+
+    <div class="error" th:text="${error}"></div>
+    <br><button type="submit">Opret Bruger</button><br><br>
+    <div id="idref">
+        <a href ="/login">Allerede bruger</a>
+    </div>
+</form>
+</div>
+
+</body>
+</html>

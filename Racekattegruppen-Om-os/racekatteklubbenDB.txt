@@ -1,0 +1,42 @@
+CREATE SCHEMA IF NOT EXISTS `racekatteklubben` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci ;
+USE `racekatteklubben` ;
+
+-- -----------------------------------------------------
+-- Table `racekatteklubben`.`users`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `racekatteklubben`.`users` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `username` VARCHAR(255) NULL DEFAULT NULL,
+  `email` VARCHAR(255) NULL DEFAULT NULL,
+  `password` VARCHAR(255) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 13
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `racekatteklubben`.`racekat`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `racekatteklubben`.`racekat` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(255) NULL DEFAULT NULL,
+  `race` VARCHAR(255) NULL DEFAULT NULL,
+  `description` VARCHAR(255) NULL DEFAULT NULL,
+  `age` INT NULL DEFAULT NULL,
+  `picture` VARCHAR(255) NULL DEFAULT NULL,
+  `userID` INT NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `userID` (`userID` ASC) VISIBLE,
+  CONSTRAINT `racekat_ibfk_1`
+    FOREIGN KEY (`userID`)
+    REFERENCES `racekatteklubben`.`users` (`id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
