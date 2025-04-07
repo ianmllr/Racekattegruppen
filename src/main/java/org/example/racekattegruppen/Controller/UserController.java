@@ -1,6 +1,7 @@
 package org.example.racekattegruppen.Controller;
 
 import jakarta.servlet.http.HttpSession;
+import jakarta.validation.Valid;
 import org.example.racekattegruppen.Model.User;
 import org.example.racekattegruppen.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
@@ -24,7 +26,13 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public String registerUser(@ModelAttribute User user, HttpSession session, Model model) {
+    public String registerUser(@Valid @ModelAttribute User user, BindingResult bindingResult, HttpSession session, Model model) {
+
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("errors", bindingResult.getAllErrors());
+            return "register";
+        }
+
         if (userService.register(user)) {
             session.setAttribute("currentUser", user);
             System.out.println(user.getUsername() + "registreret"); // debugging

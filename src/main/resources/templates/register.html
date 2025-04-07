@@ -15,6 +15,7 @@
     <br><input type="email" th:field="*{email}" required><br>
     <label >Indtast dit password</label>
    <br> <input type="password" th:field="*{password}" required><br>
+    <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password fejl</div>
 
     <div class="error" th:text="${error}"></div>
     <br><button type="submit">Opret Bruger</button><br><br>
