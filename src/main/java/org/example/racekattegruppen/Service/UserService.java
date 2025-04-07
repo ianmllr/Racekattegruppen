@@ -1,6 +1,7 @@
 package org.example.racekattegruppen.Service;
 
 import org.example.racekattegruppen.Database.RacekatteRepo;
+import org.example.racekattegruppen.Database.UserRepo;
 import org.example.racekattegruppen.Model.Racekat;
 import org.example.racekattegruppen.Model.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,14 +14,15 @@ import java.util.List;
 @Service
 public class UserService {
 @Autowired
-    private RacekatteRepo racekatteRepo;
+
+    private UserRepo userRepo;
 
     private User user;
 
     // user metoder
 
     public User login(String email, String password) {
-        user = racekatteRepo.readUserByEmail(email);
+        user = userRepo.readUserByEmail(email);
         if (user != null && BCrypt.checkpw(password, user.getPassword())) {
             System.out.println("Bruger logget ind: " + user.getUsername());
             return user;
@@ -30,60 +32,33 @@ public class UserService {
     }
 
     public Boolean register(User user) {
-        if (racekatteRepo.readUserByEmail(user.getEmail()) != null) {
+        if (userRepo.readUserByEmail(user.getEmail()) != null) {
             return false;
         }
         String hashed = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
         user.setPassword(hashed);
-        return racekatteRepo.createUser(user);
+        return userRepo.createUser(user);
     }
 
     public boolean deleteUser(User user) {
-        return racekatteRepo.deleteUser(user);
+        return userRepo.deleteUser(user);
     }
 
     public boolean updateUser(User user) {
         if(user.getPassword().isEmpty()) {
-            return racekatteRepo.updateUserNoPass(user);
+            return userRepo.updateUserNoPass(user);
         }
         else {
             String hashed = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
             user.setPassword(hashed);
-            return racekatteRepo.updateUser(user);
+            return userRepo.updateUser(user);
         }
     }
 
     public User getUser(int id) {
-        return racekatteRepo.getUser(id);
+        return userRepo.getUser(id);
     }
 
-    // racekatte metoder
 
-    public void createRacekat(Racekat racekat) {
-        racekatteRepo.createRacekat(racekat);
-    }
 
-    public Racekat readRacekat(int id) {
-        return racekatteRepo.readRacekat(id);
-    }
-
-    public List<Racekat> readRacekatte() {
-        return racekatteRepo.readRacekatte();
-    }
-
-    public List<Racekat> readRacekatteByOwner(int id) {
-        return racekatteRepo.readRacekatteByOwner(id);
-    }
-
-    public void updateRacekat(Racekat racekat) {
-        racekatteRepo.updateRacekat(racekat);
-    }
-
-    public List<User> getUsers() {
-        return racekatteRepo.readAllUsers();
-    }
-
-    public void deleteRacekat(Racekat racekat) {
-        racekatteRepo.deleteRacekat(racekat);
-    }
 }
