@@ -9,12 +9,12 @@
 <body>
 <h1>Ny racekat</h1>
 <script>
-    function myFunction() {
+    function fejl() {
         alert("Hov, der opstod en fejl");
     }
 </script>
 <script th:if="${error}">
-    myFunction();
+    fejl();
 </script>
 <span id="newcaterror" th:if="${error}" th:text="${error}" style="color:#ff00ea;"></span>
 <div id="newcatbox">
