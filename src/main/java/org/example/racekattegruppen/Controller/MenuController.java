@@ -16,7 +16,6 @@ public class MenuController {
 
     @Autowired
     UserService userService;
-
     @Autowired
     RacekatteService racekatteService;
 
@@ -83,6 +82,8 @@ public class MenuController {
         racekatteService.deleteRacekat(racekat);
         return "redirect:/menu";
     }
+
+
 
     @PostMapping("/menu")
     public String logout(HttpSession session) {

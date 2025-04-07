@@ -57,4 +57,11 @@ public class RacekatteRepo {
         jdbcTemplate.update(sql, racekat.getId());
     }
 
+    public void addRacekatToExhibition(Racekat racekat) {
+        String sql = "INSERT INTO exhibition (racekatID) VALUES (?)";
+        jdbcTemplate.update(sql, racekat.getId());
+    }
+
+    public void removeRacekatFromExhibition(Racekat racekat) {
+        String sql = "DELETE FROM exhibition WHERE racekatID = ?";}
 }
