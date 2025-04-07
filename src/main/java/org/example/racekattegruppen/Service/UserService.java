@@ -59,6 +59,10 @@ public class UserService {
         return userRepo.getUser(id);
     }
 
+    public List<User> getUsers() {
+        return userRepo.readAllUsers();
+    }
+
 
 
 }

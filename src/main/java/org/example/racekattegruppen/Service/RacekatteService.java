@@ -34,9 +34,7 @@ public class RacekatteService {
         racekatteRepo.updateRacekat(racekat);
     }
 
-    public List<User> getUsers() {
-        return racekatteRepo.readAllUsers();
-    }
+
 
     public void deleteRacekat(Racekat racekat) {
         racekatteRepo.deleteRacekat(racekat);
