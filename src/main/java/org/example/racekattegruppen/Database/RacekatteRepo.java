@@ -19,7 +19,7 @@ public class RacekatteRepo {
     private JdbcTemplate jdbcTemplate;
 
     // racekatte metoder
-    public void createRacekat(Racekat racekat) {
+    public void createRacekat(Racekat racekat) throws Exception {
         String sql = "INSERT INTO racekat (id, name, race, description, age, picture, userID) VALUES (?, ?, ?, ?, ?, ?, ?)";
         jdbcTemplate.update(sql, racekat.getId(), racekat.getName(), racekat.getRace(), racekat.getDescription(), racekat.getAge(), racekat.getPicture(), racekat.getUserID());
     }

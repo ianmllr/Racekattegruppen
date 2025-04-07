@@ -56,7 +56,6 @@ public class MenuController {
     public String getNewCat(Model model, HttpSession session) {
         User user = (User) session.getAttribute("currentUser");
         model.addAttribute("user", user);
-
         Racekat racekat = new Racekat();
         model.addAttribute("racekat", racekat);
 
@@ -69,7 +68,12 @@ public class MenuController {
         model.addAttribute("user", user);
         model.addAttribute("racekat", racekat);
         racekat.setUserID(user.getId());
-        racekatteService.createRacekat(racekat);
+        try {
+            racekatteService.createRacekat(racekat);
+        }catch (Exception e) {
+            model.addAttribute("error", e.getMessage());
+            return "newcat";
+        }
         return "redirect:/menu";
     }
 

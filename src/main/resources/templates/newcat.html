@@ -7,6 +7,7 @@
 </head>
 <body>
 <h1>Ny racekat</h1>
+<button id="newcaterror" th:if="${error}" type="submit"><a th:href="@{/newcat}">Fejl! Kilk her for at prøve igen</a></button>
 <div id="newcatbox">
     <h1>Indtast oplysninger</h1>
     <form th:action="@{/newcat}" th:object="${racekat}" th:method="post">
@@ -20,7 +21,6 @@
         <br><input type="text" th:field="*{description}" required><br>
         <label >Indtast kattens billede</label>
         <br><input type="text" th:field="*{picture}" required><br>
-
         <br><button type="submit">Opret kat</button><br><br>
     </form>
 </div>

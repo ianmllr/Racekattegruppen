@@ -14,7 +14,7 @@ public class RacekatteService {
     @Autowired
     private RacekatteRepo racekatteRepo;
 
-    public void createRacekat(Racekat racekat) {
+    public void createRacekat(Racekat racekat) throws Exception {
         racekatteRepo.createRacekat(racekat);
     }
 
