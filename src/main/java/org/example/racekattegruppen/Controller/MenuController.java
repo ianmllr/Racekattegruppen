@@ -71,7 +71,7 @@ public class MenuController {
         try {
             racekatteService.createRacekat(racekat);
         }catch (Exception e) {
-            model.addAttribute("error", e.getMessage());
+            model.addAttribute("error", "Fejl - prøv igen");
             return "newcat";
         }
         return "redirect:/menu";

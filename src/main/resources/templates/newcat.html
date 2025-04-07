@@ -8,19 +8,27 @@
 </head>
 <body>
 <h1>Ny racekat</h1>
-<button id="newcaterror" th:if="${error}" type="submit"><a th:href="@{/newcat}">Fejl! Kilk her for at prøve igen</a></button>
+<script>
+    function myFunction() {
+        alert("Hov, der opstod en fejl");
+    }
+</script>
+<script th:if="${error}">
+    myFunction();
+</script>
+<span id="newcaterror" th:if="${error}" th:text="${error}" style="color:#ff00ea;"></span>
 <div id="newcatbox">
     <h1>Indtast oplysninger</h1>
     <form th:action="@{/newcat}" th:object="${racekat}" th:method="post">
         <label>Indtast kattens navn</label>
         <br><input type="text" th:field="*{name}" required><br>
-        <label >Indtast kattens alder</label>
+        <label>Indtast kattens alder</label>
         <br><input type="number" th:field="*{age}" required><br>
-        <label >Indtast kattens race</label>
+        <label>Indtast kattens race</label>
         <br><input type="text" th:field="*{race}" required><br>
-        <label >Indtast kattens beskrivelse</label>
+        <label>Indtast kattens beskrivelse</label>
         <br><input type="text" th:field="*{description}" required><br>
-        <label >Indtast kattens billede</label>
+        <label>Indtast kattens billede</label>
         <br><input type="text" th:field="*{picture}" required><br>
         <br><button type="submit">Opret kat</button><br><br>
     </form>
