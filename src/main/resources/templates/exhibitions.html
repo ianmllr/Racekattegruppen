@@ -17,12 +17,18 @@
         <p th:text="${exhibition.description}"></p>
         <p><strong>Pris:</strong> <span th:text="${exhibition.price}"></span></p>
         <hr>
+        <div class="button-container">
+            <a th:if="${user.id == exhibition.createdByID}" th:href="@{/editexhibition/{id}(id=${exhibition.id})}">
+                <button type="submit">Rediger udstilling</button>
+            </a>
 
-        <form th:if="${user.id == exhibition.createdByID}" th:action="@{/exhibitions/delete}" th:method="post">
-            <button type="submit">Slet udstilling</button>
-        </form>
+            <form th:if="${user.id == exhibition.createdByID}" th:action="@{/exhibitions/delete}" th:method="post">
+                <input type="hidden" name="id" th:value="${exhibition.id}" />
+                <button type="submit">Slet udstilling</button>
+            </form>
+        </div>
     </div>
-   </div>
+</div>
 
 <div class="BtnTilbage">
     <button id="tilbage" type="submit"><a th:href="@{/menu}">Tilbage</a></button>

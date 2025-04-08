@@ -80,7 +80,6 @@ public class UserController {
 
     @PostMapping("/edit")
     public String updateUser(@ModelAttribute User user, Model model, HttpSession session) {
-        System.out.println(user.getPassword());
         boolean updated = userService.updateUser(user);
         session.setAttribute("currentUser", user);
         model.addAttribute("updated", updated);

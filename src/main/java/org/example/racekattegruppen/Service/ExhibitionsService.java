@@ -32,12 +32,15 @@ public class ExhibitionsService {
         }
     }
 
-    public boolean deleteExhibitionIfPossible(Exhibition exhibition, int currentUserID) {
-        if (exhibition.getId() == currentUserID) {
+    public void updateExhibition(Exhibition exhibition) {
+        if (exhibition != null) {
+            exhibitionRepo.updateExhibition(exhibition);
+        }
+    }
+
+    public void deleteExhibitionIfPossible(Exhibition exhibition, int currentUserID) {
+        if (exhibition.getCreatedByID() == currentUserID) {
             deleteExhibitionById(exhibition.getId());
-            return true;
-            } else {
-            return false;
         }
     }
 
