@@ -32,8 +32,18 @@ public class ExhibitionsService {
         }
     }
 
-    public boolean deleteExhibition(int id) {
-        return exhibitionRepo.deleteExhibition(id);
+    public boolean deleteExhibitionIfPossible(Exhibition exhibition, int currentUserID) {
+        if (exhibition.getId() == currentUserID) {
+            deleteExhibitionById(exhibition.getId());
+            return true;
+            } else {
+            return false;
+        }
     }
+
+    public void deleteExhibitionById(int id) {
+        exhibitionRepo.deleteExhibition(id);
+    }
+
 
 }

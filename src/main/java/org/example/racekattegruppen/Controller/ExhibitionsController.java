@@ -3,7 +3,6 @@ package org.example.racekattegruppen.Controller;
 
 import jakarta.servlet.http.HttpSession;
 import org.example.racekattegruppen.Model.Exhibition;
-import org.example.racekattegruppen.Model.Racekat;
 import org.example.racekattegruppen.Model.User;
 import org.example.racekattegruppen.Service.ExhibitionsService;
 import org.example.racekattegruppen.Service.RacekatteService;
@@ -27,7 +26,6 @@ public class ExhibitionsController {
 
     @GetMapping("/exhibitions")
     public String getExhibitions(Model model, HttpSession session) {
-        System.out.println("called getexhibitions");
         User user = (User) session.getAttribute("currentUser");
         model.addAttribute("user", user);
         List<Exhibition> exhibitions = exhibitionsService.readAllExhibitions();
@@ -45,15 +43,19 @@ public class ExhibitionsController {
     }
 
     @PostMapping("/newexhibition")
-    public String postNewExhibition(@ModelAttribute Exhibition exhibition) {
+    public String postNewExhibition(@ModelAttribute Exhibition exhibition, Model model, HttpSession session) {
+        User user = (User) session.getAttribute("currentUser");
+        model.addAttribute("user", user);
+        exhibition.setCreatedByID(user.getId());
         exhibitionsService.createExhibition(exhibition);
         return "redirect:/exhibitions";
     }
 
     @PostMapping("/exhibitions/delete")
-    public String deleteExhibition(@RequestParam("id") int id){
-        Exhibition exhibition = exhibitionsService.readExhibition(id);
-        exhibitionsService.deleteExhibition(exhibition.getId());
+    public String deleteExhibition(@RequestParam("id") int id, HttpSession session){
+        User user = (User) session.getAttribute("currentUser");
+        Exhibition exhibition = exhibitionsService.readExhibition(id); // Sætter udstilling til den udstilling der skal slettes
+        exhibitionsService.deleteExhibitionIfPossible(exhibition, user.getId()); // sletter udstilling hvis userID matcher createdByID
         return "redirect:/exhibitions";
     }
 

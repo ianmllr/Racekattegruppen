@@ -24,6 +24,7 @@
     <br>
     <label for="price">Pris: </label>
     <input type="number" id="price" th:field="*{price}" required>
+    <input type="hidden" th:value="${user.id}" th:field="*{createdByID}">
     <button type="submit">Opret udstilling</button>
 </form>
 <div class="BtnTilbage">

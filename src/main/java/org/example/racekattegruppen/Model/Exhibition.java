@@ -13,19 +13,27 @@ public class Exhibition {
     private LocalTime time;
     private String description;
     private int price;
+    private int createdByID;
 
-    public Exhibition(int id, String name, Date date, LocalTime time, String description, int price) {
+    public Exhibition(int id, String name, Date date, LocalTime time, String description, int price, int createdByID) {
         this.id = id;
         this.name = name;
         this.date = date;
         this.time = time;
         this.description = description;
         this.price = price;
+        this.createdByID = createdByID;
     }
 
     public Exhibition(){}
 
+    public int getCreatedByID() {
+        return createdByID;
+    }
 
+    public void setCreatedByID(int createdByID) {
+        this.createdByID = createdByID;
+    }
 
     public int getId() {
         return id;
