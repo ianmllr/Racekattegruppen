@@ -3,8 +3,10 @@ package org.example.racekattegruppen.Service;
 import org.example.racekattegruppen.Infrastructure.RacekatteRepo;
 import org.example.racekattegruppen.Model.Racekat;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
+import java.sql.SQLException;
 import java.util.List;
 
 @Service
@@ -13,7 +15,7 @@ public class RacekatteService {
     @Autowired
     private RacekatteRepo racekatteRepo;
 
-    public void createRacekat(Racekat racekat) throws Exception {
+    public void createRacekat(Racekat racekat) throws DataIntegrityViolationException {
         racekatteRepo.createRacekat(racekat);
     }
 

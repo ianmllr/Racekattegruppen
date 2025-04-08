@@ -6,9 +6,12 @@ import org.example.racekattegruppen.Model.User;
 import org.example.racekattegruppen.Service.RacekatteService;
 import org.example.racekattegruppen.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.sql.SQLException;
 import java.util.List;
 
 @Controller
@@ -67,7 +70,7 @@ public class MenuController {
         racekat.setUserID(user.getId());
         try {
             racekatteService.createRacekat(racekat);
-        }catch (Exception e) {
+        }catch (DataIntegrityViolationException e) {
             model.addAttribute("error", "Fejl - prøv igen");
             return "newcat";
         }

@@ -2,9 +2,11 @@ package org.example.racekattegruppen.Infrastructure;
 
 import org.example.racekattegruppen.Model.Racekat;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -15,7 +17,7 @@ public class RacekatteRepo {
     private JdbcTemplate jdbcTemplate;
 
     // racekatte metoder
-    public void createRacekat(Racekat racekat) throws Exception {
+    public void createRacekat(Racekat racekat) throws DataIntegrityViolationException {
         String sql = "INSERT INTO racekat (id, name, race, description, age, picture, userID) VALUES (?, ?, ?, ?, ?, ?, ?)";
         jdbcTemplate.update(sql, racekat.getId(), racekat.getName(), racekat.getRace(), racekat.getDescription(), racekat.getAge(), racekat.getPicture(), racekat.getUserID());
     }
