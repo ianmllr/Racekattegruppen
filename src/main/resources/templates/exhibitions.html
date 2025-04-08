@@ -2,18 +2,30 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Udstillinger</title>
-    <link rel="stylesheet" href="mystyle.css">
+    <link rel="stylesheet" href="exhibitionstyle.css">
     <link rel="icon" type="image/png" href="/favicon.png">
     <meta charset="UTF-8">
 </head>
 <body>
 <h1>Udstillinger</h1>
+<button id ="newExhibitionButton"><a th:href="@{/newexhibition}">Opret ny udstilling</a></button>
 
-<div th:each="exhibition : ${exhibitions}">
-    <h2 th:text="${exhibition.name}"></h2>
-    <p><strong>Dato:</strong> <span th:text="${exhibition.date}"></span></p>
-    <p th:text="${exhibition.description}"></p>
-    <hr>
+<div class="exhibition-container">
+    <div class="exhibition-box" th:each="exhibition : ${exhibitions}">
+        <h2 th:text="${exhibition.name}"></h2>
+        <p><strong>Dato:</strong> <span th:text="${exhibition.date}"></span></p>
+        <p th:text="${exhibition.description}"></p>
+        <p><strong>Pris:</strong> <span th:text="${exhibition.price}"></span></p>
+        <hr>
+        <form th:action="@{/exhibitions/delete}" th:method="post">
+            <input type="hidden" name="id" th:value="${exhibition.id}">
+            <button type="submit">Slet udstilling</button>
+        </form>
+    </div>
+   </div>
+
+<div class="BtnTilbage">
+    <button id="tilbage" type="submit"><a th:href="@{/menu}">Tilbage</a></button>
 </div>
 </body>
 </html>

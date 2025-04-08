@@ -3,6 +3,7 @@ package org.example.racekattegruppen.Controller;
 
 import jakarta.servlet.http.HttpSession;
 import org.example.racekattegruppen.Model.Exhibition;
+import org.example.racekattegruppen.Model.Racekat;
 import org.example.racekattegruppen.Model.User;
 import org.example.racekattegruppen.Service.ExhibitionsService;
 import org.example.racekattegruppen.Service.RacekatteService;
@@ -10,8 +11,7 @@ import org.example.racekattegruppen.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -33,6 +33,28 @@ public class ExhibitionsController {
         List<Exhibition> exhibitions = exhibitionsService.readAllExhibitions();
         model.addAttribute("exhibitions", exhibitions);
         return "exhibitions";
+    }
+
+    @GetMapping("/newexhibition")
+    public String getNewExhibition(Model model, HttpSession session) {
+        User user = (User) session.getAttribute("currentUser");
+        model.addAttribute("user", user);
+        Exhibition exhibition = new Exhibition();
+        model.addAttribute("exhibition", exhibition);
+        return "newexhibition";
+    }
+
+    @PostMapping("/newexhibition")
+    public String postNewExhibition(@ModelAttribute Exhibition exhibition) {
+        exhibitionsService.createExhibition(exhibition);
+        return "redirect:/exhibitions";
+    }
+
+    @PostMapping("/exhibitions/delete")
+    public String deleteExhibition(@RequestParam("id") int id){
+        Exhibition exhibition = exhibitionsService.readExhibition(id);
+        exhibitionsService.deleteExhibition(exhibition.getId());
+        return "redirect:/exhibitions";
     }
 
 

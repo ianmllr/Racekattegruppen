@@ -1,0 +1,93 @@
+body {
+    background-image: url("https://img.freepik.com/free-vector/cat-lover-pattern-background-design_53876-100662.jpg?t=st=1743496987~exp=1743500587~hmac=8ccb66dcaf444c6cfc95d53300f43d37912102af6b0b864b27a0d2e4bc1b583e&w=1480");
+    background-attachment: fixed;
+    background-size: auto 100%;
+    background-position: center;
+}
+h5 {
+    font-family: Papyrus, serif;
+    font-size: 50px;
+    text-align: center;
+}
+h1 {
+    padding-top: 50px;
+    font-family: Papyrus, serif;
+    font-size: 50px;
+    text-align: center;
+}
+form {
+    font-family: Papyrus, serif;
+    font-size: 20px;
+    text-align: center;
+
+}
+a
+{
+    text-decoration: none;
+    color: black;
+}
+a:hover {
+    color: darkred;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+button {
+    width: 200px;
+    height: 50px;
+    padding: 10px;
+    font-size: 20px;
+    border: 2px solid black;
+    border-radius: 10px;
+    background: navajowhite;
+    font-family: Papyrus, Serif;
+    font-weight: bold;
+    text-align: center;
+    margin: 35px auto;
+    display: block;
+    line-height: 10px;
+}
+button:hover {
+    color: darkred;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+.BtnTilbage {
+    position: fixed;
+    font-size: 20px;
+    font-family: Papyrus, Serif;
+    font-weight: bold;
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    margin: 25px;
+    width: 75px;
+    height: 30px;
+    text-align: center;
+    display: inline-block;
+    line-height: 15px;
+    text-decoration: none;
+    color: black;
+}
+.exhibition-container {
+    font-family: Papyrus, serif;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 10px;
+}
+.exhibition-box {
+    border-radius: 10px;
+    background: antiquewhite;
+    border: 1px solid #666;
+    width: calc(33.33% - 20px);
+    margin: 10px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+    box-sizing: border-box;
+    padding: 15px;
+    font-family: Papyrus, serif;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration-color: white;
+}

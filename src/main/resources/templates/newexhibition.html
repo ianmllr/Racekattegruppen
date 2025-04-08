@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="mystyle.css">
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <title>Ny udstilling</title>
+</head>
+<body>
+<h1>Ny udstilling</h1>
+
+<form th:action="@{/newexhibition}" th:object="${exhibition}" th:method="post">
+    <label for="name">Navn:</label>
+    <input type="text" id="name" th:field="*{name}" required>
+    <br>
+    <label for="date">Dato:</label>
+    <input type="date" id="date" th:field="*{date}" required>
+    <br>
+    <label for="time">Tid:</label>
+    <input type="time" id="time" th:field="*{time}" required>
+    <br>
+    <label for="description">Beskrivelse:</label>
+    <textarea id="description" th:field="*{description}" required></textarea>
+    <br>
+    <label for="price">Pris: </label>
+    <input type="number" id="price" th:field="*{price}" required>
+    <button type="submit">Opret udstilling</button>
+</form>
+<div class="BtnTilbage">
+    <button id="tilbage" type="submit"><a th:href="@{/exhibitions}">Tilbage</a></button>
+</div>
+
+</body>
+</html>

@@ -13,6 +13,16 @@ public class ExhibitionsService {
     @Autowired
     private ExhibitionRepo exhibitionRepo;
 
+    public void createExhibition(Exhibition exhibition) {
+        if (exhibition != null) {
+            exhibitionRepo.createExhibition(exhibition);
+        }
+    }
+
+    public Exhibition readExhibition(int id) {
+        return exhibitionRepo.readExhibition(id);
+    }
+
     public List<Exhibition> readAllExhibitions() {
         List<Exhibition> exhibitions = exhibitionRepo.readAllExhibitions();
         if (!exhibitions.isEmpty()) {
@@ -20,6 +30,10 @@ public class ExhibitionsService {
         } else {
             return null;
         }
+    }
+
+    public boolean deleteExhibition(int id) {
+        return exhibitionRepo.deleteExhibition(id);
     }
 
 }
