@@ -10,6 +10,8 @@
 <h1>Hovsa, noget gik galt</h1>
 <div class="errorPageButton">
 <button th:type="submit" style="height: 75px; line-height: 1.5" ><a th:href="@{/}">Tryk for at vende tilbage til forsiden</a></button>
+    <h2 th:text="${status + ' ' + error}"></h2>
 </div>
+
 </body>
 </html>
