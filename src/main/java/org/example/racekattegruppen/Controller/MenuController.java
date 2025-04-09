@@ -68,12 +68,12 @@ public class MenuController {
         model.addAttribute("user", user);
         model.addAttribute("racekat", racekat);
         racekat.setUserID(user.getId());
-        try {
+//        try {
             racekatteService.createRacekat(racekat);
-        }catch (DataIntegrityViolationException e) {
-            model.addAttribute("error", "Fejl - prøv igen");
-            return "newcat";
-        }
+//        }catch (DataIntegrityViolationException e) {
+//            model.addAttribute("error", "Kan ikke gemme katten - tjek at alle felter er udfyldt korrekt");
+//            return "newcat";
+//        }
         return "redirect:/menu";
     }
 
@@ -96,12 +96,4 @@ public class MenuController {
         }
         return "redirect:/login";
     }
-
-
-
-
-
-
-
-
 }

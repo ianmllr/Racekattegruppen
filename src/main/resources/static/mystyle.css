@@ -291,18 +291,18 @@ input[type="submit"]:hover {
 }
 #newcaterror {
     width: 200px;
-    height: 25px;
+    height: 70px;
     padding: 10px;
     font-size: 20px;
     border: 2px solid black;
     border-radius: 10px;
     background: #fbf004;
-    font-family: Papyrus, Serif;
+    font-family: Papyrus, Serif, serif;
     font-weight: bold;
     text-align: center;
     margin: 35px auto;
     display: block;
-    line-height: 10px;
+    line-height: 25px;
 }
 .SuccessBack {
     width: 250px;

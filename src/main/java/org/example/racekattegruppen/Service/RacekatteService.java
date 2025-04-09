@@ -15,7 +15,7 @@ public class RacekatteService {
     @Autowired
     private RacekatteRepo racekatteRepo;
 
-    public void createRacekat(Racekat racekat) throws DataIntegrityViolationException {
+    public void createRacekat(Racekat racekat)  {
         racekatteRepo.createRacekat(racekat);
     }
 
@@ -35,12 +35,7 @@ public class RacekatteService {
         racekatteRepo.updateRacekat(racekat);
     }
 
-
-
     public void deleteRacekat(Racekat racekat) {
         racekatteRepo.deleteRacekat(racekat);
     }
-
-
-
 }
