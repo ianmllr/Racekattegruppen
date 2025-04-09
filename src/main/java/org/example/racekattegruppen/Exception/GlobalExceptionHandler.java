@@ -50,7 +50,13 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler
     public String handleNoResourceFoundException(NoResourceFoundException e, Model model) {
-        model.addAttribute("error", "Kan ikke finde ressource");
+        model.addAttribute("error", "Kan ikke finde siden");
+        return "error";
+    }
+
+    @ExceptionHandler
+    public String handleNullPointerException(NullPointerException e, Model model) {
+        model.addAttribute("error", "Der er sket en fejl. Prøv at logge ind igen");
         return "error";
     }
 }
