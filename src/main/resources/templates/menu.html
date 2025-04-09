@@ -25,7 +25,21 @@
             <button><a th:href="@{/editcat/{id}(id=${racekat.id})}">Rediger</a></button>
             <form th:action="@{/menu/delete}" th:method="post">
                 <input type="hidden" name="id" th:value="${racekat.id}">
-                <button type="submit">Slet racekat</button>
+                <button onclick="confirmDelete()">Slet racekat</button>
+                <script>
+                    function confirmDelete() {
+                        const userConfirmed = confirm("Er du sikker på du vil slette katten?");
+                        if (!userConfirmed) {
+                            event.preventDefault();
+                            alert("Annulleret.");
+                        }
+                     else {
+                         alert("Katten slettes");
+                        window.location.href = `/menu/delete`;
+                    }
+                    }
+
+                </script>
             </form>
         </div>
     </div>

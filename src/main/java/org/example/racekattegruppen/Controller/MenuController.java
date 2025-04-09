@@ -80,8 +80,11 @@ public class MenuController {
     @PostMapping("/menu/delete")
     public String deleteCat(@RequestParam("id") int id){
         Racekat racekat = racekatteService.readRacekat(id);
-        racekatteService.deleteRacekat(racekat);
-        return "redirect:/menu";
+        if(racekat != null){
+            racekatteService.deleteRacekat(racekat);
+            return "redirect:/menu";
+        }
+        return "error";
     }
 
 
