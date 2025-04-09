@@ -20,7 +20,7 @@ public class GlobalExceptionHandler {
         } else if (message.contains("duplicate key") || message.contains("Duplicate entry")) {
             model.addAttribute("error", "Denne post findes allerede – brug en anden ID eller email.");
         } else if (message.contains("foreign key constraint")) {
-            model.addAttribute("error", "Handlingen kunne ikke gennemføres pga. afhængigheder – fx en kat knyttet til en udstilling.");
+            model.addAttribute("error", "Handlingen kunne ikke gennemføres pga. afhængigheder i databasen – fx en kat knyttet til en udstilling.");
         } else {
             model.addAttribute("error", "Der opstod en databasefejl – prøv igen.");
         }
@@ -30,7 +30,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(EmptyResultDataAccessException.class)
     public String handleEmptyResult(EmptyResultDataAccessException e, Model model) {
-        model.addAttribute("error", "Elementet blev ikke fundet – det er måske allerede slettet.");
+        model.addAttribute("error", "Elementet blev ikke fundet – måske er det allerede slettet.");
         return "error";
     }
 
@@ -43,7 +43,7 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler
-    public String handleException(BadSqlGrammarException e, Model model) {
+    public String handleBadSQLGrammarException(BadSqlGrammarException e, Model model) {
         model.addAttribute("error", "Tjek database-forespørgslen");
         return "error";
     }
