@@ -22,6 +22,14 @@ h2 {
     font-size: 25px;
     text-align: center;
 }
+input {
+    border: 2px solid black;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    background: navajowhite;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+    width: 80%;
+}
 form {
     font-family: Papyrus, serif;
     font-size: 20px;
@@ -86,13 +94,13 @@ button:hover {
 
 #newcatbox {
     width: 300px;
-    height: 600px;
+    height: 800px;
     font-size: 20px;
     font-weight: bold;
     text-align: center;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
     margin: 50px auto auto;
-    background-color: navajowhite;
+    background-color: antiquewhite;
 
 }
 #h12 {
@@ -132,7 +140,7 @@ input[type="submit"]:hover {
     cursor: pointer;
 }
 .menu-box {
-    background: navajowhite;
+    background: antiquewhite;
     font-size: 20px;
     padding: 15px;
     border: 1px solid #666;
@@ -156,7 +164,7 @@ input[type="submit"]:hover {
     border-bottom: 1px solid #ccc;
 }
 .menu-box th {
-    background-color: navajowhite;
+    background-color: antiquewhite;
     font-weight: bold;
     text-align: left;
 }
