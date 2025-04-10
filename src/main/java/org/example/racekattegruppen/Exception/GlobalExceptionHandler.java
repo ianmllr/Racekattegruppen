@@ -59,5 +59,11 @@ public class GlobalExceptionHandler {
         model.addAttribute("error", "Der er sket en fejl. Prøv at logge ind igen");
         return "error";
     }
+
+    @ExceptionHandler
+    public String handleIllegalArgumentException(IllegalArgumentException e, Model model) {
+        model.addAttribute("error", "Der er sket en fejl");
+        return "error";
+    }
 }
 

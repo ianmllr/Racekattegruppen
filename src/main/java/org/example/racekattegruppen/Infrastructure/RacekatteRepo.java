@@ -17,9 +17,15 @@ public class RacekatteRepo {
     private JdbcTemplate jdbcTemplate;
 
     // racekatte metoder
-    public void createRacekat(Racekat racekat)  {
+    public boolean createRacekat(Racekat racekat)  {
         String sql = "INSERT INTO racekat (id, name, race, description, age, picture, userID) VALUES (?, ?, ?, ?, ?, ?, ?)";
-        jdbcTemplate.update(sql, racekat.getId(), racekat.getName(), racekat.getRace(), racekat.getDescription(), racekat.getAge(), racekat.getPicture(), racekat.getUserID());
+        int created = jdbcTemplate.update(sql, racekat.getId(), racekat.getName(), racekat.getRace(), racekat.getDescription(), racekat.getAge(), racekat.getPicture(), racekat.getUserID());
+        if (created > 0) {
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     public List<Racekat> readRacekatte() {
@@ -43,16 +49,28 @@ public class RacekatteRepo {
 //        jdbcTemplate.update(sql, racekat.getName(), racekat.getRace(), racekat.getDescription(), racekat.getAge(), racekat.getPicture(), racekat.getUserID(), racekat.getId());
 //    }
 
-    public void updateRacekat(Racekat racekat) {
+    public boolean updateRacekat(Racekat racekat) {
         String sql = "UPDATE racekat SET name = ?, race = ?, description = ?, age = ?, picture = ?, userID = ? WHERE id = ?";
         System.out.println("SQL query: " + sql);
         System.out.println("Parameters: " + Arrays.toString(new Object[] {racekat.getName(), racekat.getRace(), racekat.getDescription(), racekat.getAge(), racekat.getPicture(), racekat.getUserID(), racekat.getId()}));
-        jdbcTemplate.update(sql, racekat.getName(), racekat.getRace(), racekat.getDescription(), racekat.getAge(), racekat.getPicture(), racekat.getUserID(), racekat.getId());
+        int updated = jdbcTemplate.update(sql, racekat.getName(), racekat.getRace(), racekat.getDescription(), racekat.getAge(), racekat.getPicture(), racekat.getUserID(), racekat.getId());
+        if(updated > 0) {
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
-    public void deleteRacekat(Racekat racekat) {
+    public boolean deleteRacekat(Racekat racekat) {
         String sql = "DELETE FROM racekat WHERE id = ?";
-        jdbcTemplate.update(sql, racekat.getId());
+        int deleted = jdbcTemplate.update(sql, racekat.getId());
+        if(deleted > 0) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     public void addRacekatToExhibition(Racekat racekat) {

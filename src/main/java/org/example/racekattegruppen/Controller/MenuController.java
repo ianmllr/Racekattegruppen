@@ -47,7 +47,7 @@ public class MenuController {
         model.addAttribute("user", user);
         model.addAttribute("racekat", racekat);
         racekat.setUserID(user.getId());
-        racekatteService.updateRacekat(racekat);
+        boolean updatedCat = racekatteService.updateRacekat(racekat);
         return "redirect:/menu";
     }
 
@@ -68,12 +68,7 @@ public class MenuController {
         model.addAttribute("user", user);
         model.addAttribute("racekat", racekat);
         racekat.setUserID(user.getId());
-//        try {
-            racekatteService.createRacekat(racekat);
-//        }catch (DataIntegrityViolationException e) {
-//            model.addAttribute("error", "Kan ikke gemme katten - tjek at alle felter er udfyldt korrekt");
-//            return "newcat";
-//        }
+        boolean newCatInserted = racekatteService.createRacekat(racekat);
         return "redirect:/menu";
     }
 
@@ -81,7 +76,7 @@ public class MenuController {
     public String deleteCat(@RequestParam("id") int id){
         Racekat racekat = racekatteService.readRacekat(id);
         if(racekat != null){
-            racekatteService.deleteRacekat(racekat);
+            boolean deleted = racekatteService.deleteRacekat(racekat);
             return "redirect:/menu";
         }
         return "error";

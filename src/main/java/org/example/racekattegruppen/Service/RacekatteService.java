@@ -15,8 +15,8 @@ public class RacekatteService {
     @Autowired
     private RacekatteRepo racekatteRepo;
 
-    public void createRacekat(Racekat racekat)  {
-        racekatteRepo.createRacekat(racekat);
+    public boolean createRacekat(Racekat racekat)  {
+        return racekatteRepo.createRacekat(racekat);
     }
 
     public Racekat readRacekat(int id) {
@@ -31,11 +31,11 @@ public class RacekatteService {
         return racekatteRepo.readRacekatteByOwner(id);
     }
 
-    public void updateRacekat(Racekat racekat) {
-        racekatteRepo.updateRacekat(racekat);
+    public boolean updateRacekat(Racekat racekat) {
+        return racekatteRepo.updateRacekat(racekat);
     }
 
-    public void deleteRacekat(Racekat racekat) {
-        racekatteRepo.deleteRacekat(racekat);
+    public boolean deleteRacekat(Racekat racekat) {
+        return racekatteRepo.deleteRacekat(racekat);
     }
 }
