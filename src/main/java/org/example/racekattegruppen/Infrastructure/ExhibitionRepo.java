@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import java.sql.Time;
 import java.util.List;
 
 @Repository
@@ -31,7 +30,6 @@ public class ExhibitionRepo {
     }
 
     public void updateExhibition(Exhibition exhibition) {
-        System.out.println("Opdaterer udstilling med navnet " + exhibition.getName());
         String sql = "UPDATE exhibition SET name = ?, date = ?, time = ?, description = ?, price = ?, createdByID = ? WHERE id = ?";
         jdbcTemplate.update(sql, exhibition.getName(), exhibition.getDate(), exhibition.getTime(), exhibition.getDescription(), exhibition.getPrice(), exhibition.getCreatedByID(), exhibition.getId());
     }

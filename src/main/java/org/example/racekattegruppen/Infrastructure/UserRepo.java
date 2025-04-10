@@ -45,22 +45,12 @@ public class UserRepo {
     public boolean updateUser(User user) {
         String sql = "UPDATE users SET username = ?, email = ?, password = ? WHERE id = ?";
         int update = jdbcTemplate.update(sql, user.getUsername(), user.getEmail(), user.getPassword(), user.getId());
-        if (update == 1) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return update == 1;
     }
     public boolean updateUserNoPass(User user) {
         String sql = "UPDATE users SET username = ?, email = ? WHERE id = ?";
         int update = jdbcTemplate.update(sql, user.getUsername(), user.getEmail(), user.getId());
-        if (update == 1) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return update == 1;
     }
 
     public boolean deleteUser(User user) {

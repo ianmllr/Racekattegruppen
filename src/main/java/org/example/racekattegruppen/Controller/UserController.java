@@ -40,8 +40,7 @@ public class UserController {
         }
 
         if (userService.register(user)) {
-            session.setAttribute("currentUser", user);
-            System.out.println(user.getUsername() + "registreret"); // debugging
+            session.setAttribute("currentUser", user); // sætter currentUser til den nye user
             return "redirect:/login";
         }
         else {
@@ -50,7 +49,6 @@ public class UserController {
         }
     }
 
-    // Login
     @GetMapping("/login")
     public String getLogin(Model model) {
         model.addAttribute("user", new User());
@@ -61,10 +59,10 @@ public class UserController {
     public String login(@ModelAttribute User user, HttpSession session, Model model) {
         User loggedInUser = userService.login(user.getEmail(), user.getPassword());
         if (loggedInUser != null) {
-            session.setAttribute("currentUser", loggedInUser);
+            session.setAttribute("currentUser", loggedInUser); // sætter currentUser til brugeren der lige er logget ind
             return "redirect:/menu";
         } else {
-            model.addAttribute("error", "Forkert email eller password");
+            model.addAttribute("error", "Forkert email eller password"); // giver error besked
             return "login";
         }
     }
@@ -80,7 +78,7 @@ public class UserController {
 
     @PostMapping("/edit")
     public String updateUser(@ModelAttribute User user, Model model, HttpSession session) {
-        boolean updated = userService.updateUser(user);
+        boolean updated = userService.updateUser(user); // opdaterer user
         session.setAttribute("currentUser", user);
         model.addAttribute("updated", updated);
         return "edit";
@@ -91,6 +89,7 @@ public class UserController {
         User currentUser = (User) session.getAttribute("currentUser");
         model.addAttribute("currentUser", userService.getUser(id));
         System.out.println(currentUser.getId());
+        // sletter bruger og giver relevant besked
         boolean isDeleted = userService.deleteUser(currentUser);
         if (isDeleted) {
             return ResponseEntity.status(HttpStatus.OK).body("Deleted");

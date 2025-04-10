@@ -22,8 +22,7 @@
     <ul>
         <li th:each="cat : ${participatingCats}">
             <span th:text="${cat.name} + ' (' + ${cat.age} + ')'"></span>
-            <form th:if="${user.id == cat.userID}" th:action="@{/exhibitions/removecat}" method="post">
-                <input type="hidden" name="exhibitionId" th:value="${exhibition.id}">
+            <form th:if="${user.id == cat.userID || exhibition.createdByID == user.id}" th:action="@{/exhibitions/removecat}" method="post">                <input type="hidden" name="exhibitionId" th:value="${exhibition.id}">
                 <input type="hidden" name="catId" th:value="${cat.id}">
                 <button type="submit">Fjern kat</button>
             </form>
@@ -35,7 +34,8 @@
 
 <div class="racekatteliste-box">
     <h2>Tilmeld en af dine katte:</h2>
-    <form th:action="@{/payment/initiate}" method="post">
+<!--    <form th:action="@{/payment/initiate}" method="post">-->
+        <form th:action="@{/exhibitions/addcat}" method="post">
         <input type="hidden" name="exhibitionId" th:value="${exhibition.id}">
         <div th:each="cat : ${userCats}">
             <input type="checkbox" name="catIds" th:value="${cat.id}">

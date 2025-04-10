@@ -14,9 +14,17 @@
 <button id="edit"><a th:href="@{'/edit/' + ${user.id}}">Rediger din profil</a></button>
 <button id="exhibitionsButton"><a th:href="@{/exhibitions}">Udstillinger</a></button>
 
-<h2>Dine katte:</h2>
+<div th:if="${#lists.isEmpty(racekatte)}">
+    <h2>Du har ikke registreret nogle katte endnu.</h2>
+</div>
+
+<div th:unless="${#lists.isEmpty(racekatte)}">
+    <h2>Dine katte:</h2>
+</div>
+
 <div class="racekatteliste-container">
     <div id="racekatteliste" th:each="racekat : ${racekatte}" class="racekatteliste-box">
+
         <p th:text="${racekat.name} + ' (' + ${racekat.age} + ' år)'">Navn og alder</p>
         <p th:text="'Race: ' + ${racekat.race}"></p>
         <p th:text="'Beskrivelse: ' + ${racekat.description}"></p>

@@ -4,7 +4,6 @@ import org.example.racekattegruppen.Infrastructure.ExhibitionRepo;
 import org.example.racekattegruppen.Model.Exhibition;
 import org.example.racekattegruppen.Model.Racekat;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -40,6 +39,7 @@ public class ExhibitionsService {
         }
     }
 
+    // tjekker om brugeren er skaberen af udstillingen og hvis sandt sletter udstillingen
     public void deleteExhibitionIfPossible(Exhibition exhibition, int currentUserID) {
         if (exhibition.getCreatedByID() == currentUserID) {
             deleteExhibitionById(exhibition.getId());
@@ -61,12 +61,19 @@ public class ExhibitionsService {
     public void removeCatFromExhibition(int catId, int exhibitionId) {
         exhibitionRepo.removeCatFromExhibition(catId, exhibitionId);
     }
+
     public int getExhibitionByPrice(int id) {
         return exhibitionRepo.readExhibition(id).getPrice();
     }
 
     public boolean isCatPaidForExhibition(int catId, int exhibitionId) {
         return exhibitionRepo.isCatPaidForExhibition(catId, exhibitionId);
+    }
+
+    // tjekker om brugeren har skabt udstillingen og returnerer sandt hvis ja
+    public boolean userCreatedExhibition(int exhibitionId, int currentUserID) {
+        Exhibition exhibition = readExhibition(exhibitionId);
+        return exhibition.getCreatedByID() == currentUserID;
     }
 
 }

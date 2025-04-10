@@ -2,12 +2,9 @@ package org.example.racekattegruppen.Infrastructure;
 
 import org.example.racekattegruppen.Model.Racekat;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import java.sql.SQLException;
-import java.util.Arrays;
 import java.util.List;
 
 @Repository
@@ -17,15 +14,10 @@ public class RacekatteRepo {
     private JdbcTemplate jdbcTemplate;
 
     // racekatte metoder
-    public boolean createRacekat(Racekat racekat)  {
+    public boolean createRacekat(Racekat racekat) {
         String sql = "INSERT INTO racekat (id, name, race, description, age, picture, userID) VALUES (?, ?, ?, ?, ?, ?, ?)";
         int created = jdbcTemplate.update(sql, racekat.getId(), racekat.getName(), racekat.getRace(), racekat.getDescription(), racekat.getAge(), racekat.getPicture(), racekat.getUserID());
-        if (created > 0) {
-            return true;
-        }
-        else{
-            return false;
-        }
+        return created > 0;
     }
 
     public List<Racekat> readRacekatte() {
@@ -44,40 +36,23 @@ public class RacekatteRepo {
     }
 
 
-//    public void updateRacekat(Racekat racekat) {
-//        String sql = "UPDATE racekat SET name = ?, race = ?, description = ?, age = ?, picture = ?, userID = ? WHERE id = ?";
-//        jdbcTemplate.update(sql, racekat.getName(), racekat.getRace(), racekat.getDescription(), racekat.getAge(), racekat.getPicture(), racekat.getUserID(), racekat.getId());
-//    }
-
     public boolean updateRacekat(Racekat racekat) {
         String sql = "UPDATE racekat SET name = ?, race = ?, description = ?, age = ?, picture = ?, userID = ? WHERE id = ?";
-        System.out.println("SQL query: " + sql);
-        System.out.println("Parameters: " + Arrays.toString(new Object[] {racekat.getName(), racekat.getRace(), racekat.getDescription(), racekat.getAge(), racekat.getPicture(), racekat.getUserID(), racekat.getId()}));
-        int updated = jdbcTemplate.update(sql, racekat.getName(), racekat.getRace(), racekat.getDescription(), racekat.getAge(), racekat.getPicture(), racekat.getUserID(), racekat.getId());
-        if(updated > 0) {
-            return true;
-        }
-        else{
-            return false;
-        }
+        int rowsAffected = jdbcTemplate.update(sql, racekat.getName(), racekat.getRace(), racekat.getDescription(), racekat.getAge(), racekat.getPicture(), racekat.getUserID(), racekat.getId());
+        return rowsAffected > 0;
     }
+
+//    public boolean updateRacekat(Racekat racekat) {
+//        String sql = "UPDATE racekat SET name = ?, race = ?, description = ?, age = ?, picture = ?, userID = ? WHERE id = ?";
+//        System.out.println("SQL query: " + sql);
+//        System.out.println("Parameters: " + Arrays.toString(new Object[]{racekat.getName(), racekat.getRace(), racekat.getDescription(), racekat.getAge(), racekat.getPicture(), racekat.getUserID(), racekat.getId()}));
+//        int updated = jdbcTemplate.update(sql, racekat.getName(), racekat.getRace(), racekat.getDescription(), racekat.getAge(), racekat.getPicture(), racekat.getUserID(), racekat.getId());
+//        return updated > 0;
+//    }
 
     public boolean deleteRacekat(Racekat racekat) {
         String sql = "DELETE FROM racekat WHERE id = ?";
         int deleted = jdbcTemplate.update(sql, racekat.getId());
-        if(deleted > 0) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return deleted > 0;
     }
-
-    public void addRacekatToExhibition(Racekat racekat) {
-        String sql = "INSERT INTO exhibition (racekatID) VALUES (?)";
-        jdbcTemplate.update(sql, racekat.getId());
-    }
-
-    public void removeRacekatFromExhibition(Racekat racekat) {
-        String sql = "DELETE FROM exhibition WHERE racekatID = ?";}
 }

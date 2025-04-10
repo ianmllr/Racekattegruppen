@@ -3,10 +3,8 @@ package org.example.racekattegruppen.Service;
 import org.example.racekattegruppen.Infrastructure.RacekatteRepo;
 import org.example.racekattegruppen.Model.Racekat;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
-import java.sql.SQLException;
 import java.util.List;
 
 @Service
@@ -37,5 +35,11 @@ public class RacekatteService {
 
     public boolean deleteRacekat(Racekat racekat) {
         return racekatteRepo.deleteRacekat(racekat);
+    }
+
+    // returnerer sandt eller falsk ud fra om brugerens id er lig med kattens userID
+    public boolean userOwnsCat(int userId, int catId) {
+        Racekat racekat = racekatteRepo.readRacekat(catId);
+        return racekat.getUserID() == userId;
     }
 }
