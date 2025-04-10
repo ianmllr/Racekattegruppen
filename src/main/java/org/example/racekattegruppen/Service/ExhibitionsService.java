@@ -65,4 +65,8 @@ public class ExhibitionsService {
         return exhibitionRepo.readExhibition(id).getPrice();
     }
 
+    public boolean isCatPaidForExhibition(int catId, int exhibitionId) {
+        return exhibitionRepo.isCatPaidForExhibition(catId, exhibitionId);
+    }
+
 }

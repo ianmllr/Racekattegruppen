@@ -125,8 +125,7 @@ public class ExhibitionsController {
 
 
 
-    @Autowired
-    private StripeService stripeService;
+
 
 
 

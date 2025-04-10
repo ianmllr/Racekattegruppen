@@ -69,4 +69,11 @@ public class ExhibitionRepo {
         String sql = "DELETE FROM exhibition_racecats WHERE racecat_id = ? AND exhibition_id = ?";
         jdbcTemplate.update(sql, catId, exhibitionId);
     }
+    public boolean isCatPaidForExhibition(int catId, int exhibitionId) {
+        String sql = "SELECT COUNT(*) FROM exhibition_racecats WHERE racecat_id = ? AND exhibition_id = ?";
+        System.out.println("Executing query: " + sql + " with catId: " + catId + " and exhibitionId: " + exhibitionId);
+        Integer count = jdbcTemplate.queryForObject(sql, Integer.class, catId, exhibitionId);
+        System.out.println(count);
+        return count != null && count > 0;
+    }
 }

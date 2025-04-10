@@ -33,8 +33,18 @@ public class PaymentController {
 
 
     @PostMapping("/payment/initiate")
-    public void initiatePayment(@RequestParam int exhibitionId , @RequestParam List<Integer> catIds,HttpServletResponse response, HttpSession session) throws Exception {
+    public String initiatePayment(@RequestParam int exhibitionId , @RequestParam List<Integer> catIds,HttpServletResponse response, HttpSession session, Model model) throws Exception {
         int price = exhibitionsService.getExhibitionByPrice(exhibitionId);
+
+        for (Integer catId : catIds) {
+            System.out.println("Tjekker cat id: " + catId);
+
+            if (exhibitionsService.isCatPaidForExhibition(catId, exhibitionId)) {
+                System.out.println("Cat id: " + catId + "Har allerede joinede");
+                model.addAttribute("message", "Cat ID" + catId + " har allerede deltaget");
+                return "redirect:/exhibitions/" + exhibitionId;
+            }
+        }
         String checkoutUrl = stripeService.createCheckoutSession(
 
               price , // fx 50 kr.
@@ -45,7 +55,8 @@ public class PaymentController {
         );
         session.setAttribute("catIds", catIds);
         session.setAttribute("exhibitionId", exhibitionId);
-        response.sendRedirect(checkoutUrl);
+        //response.sendRedirect(checkoutUrl);
+        return "redirect:" + checkoutUrl;
 
     }
 
