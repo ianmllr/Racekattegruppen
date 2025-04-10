@@ -119,3 +119,14 @@ button:hover {
     margin-bottom: 15px;
     border: 1px solid #ef9a9a;
 }
+#tilbage {
+    top: 10px;
+    left: 10px;
+    margin: 40px;
+    width: 150px;
+    height: 35px;
+    text-align: center;
+    line-height: 15px;
+    display: inline-block;
+    position: fixed;
+}
