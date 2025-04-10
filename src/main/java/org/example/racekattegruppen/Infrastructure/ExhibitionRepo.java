@@ -41,10 +41,6 @@ public class ExhibitionRepo {
         jdbcTemplate.update(sql, id);
     }
 
-    public List<Racekat> getUserCats(int id) {
-        String sql = "SELECT * FROM racekat WHERE userID = ?";
-        return jdbcTemplate.query(sql, (rs, rowNum) -> new Racekat(rs.getInt("id"), rs.getString("name"), rs.getString("race"), rs.getString("description"), rs.getInt("age"), rs.getString("picture"), rs.getInt("userID")), id);
-    }
 
     public void addCatToExhibition(int racecatId, int exhibitionId) {
         String sql = "INSERT INTO exhibition_racecats (racecat_id, exhibition_id) VALUES (?, ?)";

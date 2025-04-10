@@ -19,7 +19,8 @@ import java.util.List;
 public class ExhibitionsController {
     @Autowired
     private ExhibitionsService exhibitionsService;
-
+    @Autowired
+    private RacekatteService racekatteService;
 
     @GetMapping("/exhibitions")
     public String getExhibitions(Model model, HttpSession session) {
@@ -91,7 +92,7 @@ public class ExhibitionsController {
         model.addAttribute("user", user);
         model.addAttribute("exhibition", exhibition);
         model.addAttribute("participatingCats", exhibitionsService.getCatsInExhibition(id));
-        List<Racekat> userCats = exhibitionsService.getUserCats(user.getId());
+        List<Racekat> userCats = racekatteService.readRacekatteByOwner(user.getId());
         model.addAttribute("userCats", userCats);
 
         return "exhibitiondetails";
@@ -103,13 +104,12 @@ public class ExhibitionsController {
         return "redirect:/exhibitions/" +exhibitionId;
     }
 
-
     @PostMapping("/exhibitions/addcat")
     public String addCatToExhibition(@RequestParam int exhibitionId, @RequestParam List<Integer> catIds, HttpSession session) {
         for (Integer catId : catIds) {
             exhibitionsService.addCatToExhibition(catId, exhibitionId);
         }
-        return "redirect:/exhibitions/" +exhibitionId;
+        return "redirect:/exhibitions/" + exhibitionId;
     }
 
 

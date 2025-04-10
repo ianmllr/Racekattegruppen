@@ -52,7 +52,6 @@ public class ExhibitionsService {
         exhibitionRepo.deleteExhibition(id);
     }
 
-
     public List<Racekat> getCatsInExhibition(int exhibitionId) {
         String sql = """
             SELECT rk.* FROM racekat rk
@@ -70,10 +69,6 @@ public class ExhibitionsService {
             racekat.setPicture(rs.getString("picture"));
             return racekat;
         });
-    }
-
-    public List<Racekat> getUserCats(int id) {
-        return exhibitionRepo.getUserCats(id);
     }
 
     public void addCatToExhibition(int racecatId, int exhibitionId) {

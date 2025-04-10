@@ -16,7 +16,6 @@ public class MembersController {
 
     @Autowired
     private UserService userService;
-
     @Autowired
     private RacekatteService racekatteService;
 
