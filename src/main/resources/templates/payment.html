@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" href="mystyle.css">
+<link rel="icon" type="image/png" href="/favicon.png">
 <head>
     <title>Betaling</title>
 </head>
 <body>
 <h1>Betal for din kat</h1>
-<p>Pris: 50 kr.</p>
-
+<h2>Pris: 50 kr.</h2>
 <form action="/payment" method="get">
     <button type="submit">Gå til betaling med Stripe</button>
 </form>
