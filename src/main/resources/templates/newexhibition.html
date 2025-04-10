@@ -8,7 +8,7 @@
 </head>
 <body>
 <h1>Ny udstilling</h1>
-
+<div class="loginbox">
 <form th:action="@{/newexhibition}" th:object="${exhibition}" th:method="post">
     <label for="name">Navn:</label>
     <input type="text" id="name" th:field="*{name}" required>
@@ -29,6 +29,7 @@
 </form>
 <div class="BtnTilbage">
     <button id="tilbage" type="submit"><a th:href="@{/exhibitions}">Tilbage</a></button>
+</div>
 </div>
 
 </body>

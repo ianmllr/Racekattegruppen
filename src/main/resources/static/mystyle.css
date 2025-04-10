@@ -216,8 +216,9 @@ input[type="submit"]:hover {
     font-family: Papyrus, serif;
     font-weight: bold;
 }
-#describ {
-    text-area: 5
+#description {
+    width: 350px;
+    height: 100px;
 
 }
 #kat table {
