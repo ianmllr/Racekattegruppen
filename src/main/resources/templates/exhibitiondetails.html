@@ -34,7 +34,7 @@
 
 <div class="racekatteliste-box">
     <h2>Tilmeld en af dine katte:</h2>
-<!--    <form th:action="@{/payment/initiate}" method="post">-->
+    <form th:action="@{/payment/initiate}" method="post">
         <form th:action="@{/exhibitions/addcat}" method="post">
         <input type="hidden" name="exhibitionId" th:value="${exhibition.id}">
         <div th:each="cat : ${userCats}">
