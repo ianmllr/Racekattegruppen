@@ -41,8 +41,8 @@ public class PaymentController {
 
             if (exhibitionsService.isCatPaidForExhibition(catId, exhibitionId)) {
                 System.out.println("Cat id: " + catId + "Har allerede joinede");
-                model.addAttribute("message", "Cat ID" + catId + " har allerede deltaget");
-                return "redirect:/exhibitions/" + exhibitionId;
+                model.addAttribute("error", "Katten er allerede tilmeldt");
+                return "error";
             }
         }
         String checkoutUrl = stripeService.createCheckoutSession(
@@ -78,7 +78,7 @@ public class PaymentController {
     }
 
 
-    @GetMapping("/cancel")
+    @GetMapping("/payment/cancel")
 
     public String paymentCancel() {
         return "cancel"; // lav en cancel.html
