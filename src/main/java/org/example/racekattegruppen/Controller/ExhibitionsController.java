@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.IOException;
 import java.util.List;
@@ -102,18 +103,27 @@ public class ExhibitionsController {
     }
 
     @PostMapping("/exhibitions/removecat")
-    public String removeCatFromExhibition(@RequestParam int exhibitionId, @RequestParam int catId, HttpSession session) {
+    public String removeCatFromExhibition(@RequestParam int exhibitionId, @RequestParam int catId) {
         exhibitionsService.removeCatFromExhibition(catId, exhibitionId);
         return "redirect:/exhibitions/" +exhibitionId;
     }
 
     @PostMapping("/exhibitions/addcat")
-    public String addCatToExhibition(@RequestParam int exhibitionId, @RequestParam List<Integer> catIds, HttpSession session) {
+    public String addCatToExhibition(@RequestParam int exhibitionId, @RequestParam List<Integer> catIds, RedirectAttributes redirectAttributes) {
+        List<Racekat> catsInExhibition = exhibitionsService.getCatsInExhibition(exhibitionId);
+        boolean hasError = false;
         for (Integer catId : catIds) {
-            exhibitionsService.addCatToExhibition(catId, exhibitionId);
+            boolean catAlreadyInExhibition = catsInExhibition.stream().anyMatch(cat -> cat.getId() == catId);
+            if (!catAlreadyInExhibition) {
+                exhibitionsService.addCatToExhibition(catId, exhibitionId);
+            } else {
+                hasError = true;
+            }
         }
         return "redirect:/exhibitions/" + exhibitionId;
     }
+
+
 
     @Autowired
     private StripeService stripeService;

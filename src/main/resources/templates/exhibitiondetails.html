@@ -11,8 +11,10 @@
 <h1 th:text="${exhibition.name}"></h1>
 <div class="exhibition-container">
     <div class="exhibition-box">
+        <h2>Detaljer</h2>
         <p><strong>Dato:</strong> <span th:text="${exhibition.date}"></span></p>
         <p><strong>Beskrivelse:</strong> <span th:text="${exhibition.description}"></span></p>
+        <p><strong>Pris: <span th:text="${exhibition.price}"></span></strong></p>
         <br>
     </div>
     <div class="exhibition-box">
@@ -20,7 +22,7 @@
     <ul>
         <li th:each="cat : ${participatingCats}">
             <span th:text="${cat.name} + ' (' + ${cat.age} + ')'"></span>
-            <form th:action="@{/exhibitions/removecat}" method="post">
+            <form th:if="${user.id == cat.userID}" th:action="@{/exhibitions/removecat}" method="post">
                 <input type="hidden" name="exhibitionId" th:value="${exhibition.id}">
                 <input type="hidden" name="catId" th:value="${cat.id}">
                 <button type="submit">Fjern kat</button>
@@ -39,6 +41,7 @@
             <input type="checkbox" name="catIds" th:value="${cat.id}">
             <span th:text="${cat.name} + ' (' + ${cat.age} + ')'"></span>
         </div>
+        <div th:if="${error}" class="error-message" th:text="${error}"></div>
         <button type="submit">Tilmeld kat</button>
     </form>
 
