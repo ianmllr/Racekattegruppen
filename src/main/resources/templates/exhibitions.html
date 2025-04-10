@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Udstillinger</title>
-    <link rel="stylesheet" href="exhibitionstyle.css">
+    <link rel="stylesheet" th:href="@{/exhibitionstyle.css}">
     <link rel="icon" type="image/png" href="/favicon.png">
     <meta charset="UTF-8">
 </head>
@@ -21,11 +21,11 @@
             <a th:if="${user.id == exhibition.createdByID}" th:href="@{/editexhibition/{id}(id=${exhibition.id})}">
                 <button type="submit">Rediger udstilling</button>
             </a>
-
             <form th:if="${user.id == exhibition.createdByID}" th:action="@{/exhibitions/delete}" th:method="post">
                 <input type="hidden" name="id" th:value="${exhibition.id}" />
                 <button type="submit">Slet udstilling</button>
             </form>
+            <button> <a th:href="@{/exhibitions/{id}(id=${exhibition.id})}">Se detaljer</a></button>
         </div>
     </div>
 </div>

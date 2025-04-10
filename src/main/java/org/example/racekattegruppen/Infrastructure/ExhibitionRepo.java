@@ -1,6 +1,7 @@
 package org.example.racekattegruppen.Infrastructure;
 
 import org.example.racekattegruppen.Model.Exhibition;
+import org.example.racekattegruppen.Model.Racekat;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -40,5 +41,18 @@ public class ExhibitionRepo {
         jdbcTemplate.update(sql, id);
     }
 
+    public List<Racekat> getUserCats(int id) {
+        String sql = "SELECT * FROM racekat WHERE userID = ?";
+        return jdbcTemplate.query(sql, (rs, rowNum) -> new Racekat(rs.getInt("id"), rs.getString("name"), rs.getString("race"), rs.getString("description"), rs.getInt("age"), rs.getString("picture"), rs.getInt("userID")), id);
+    }
 
+    public void addCatToExhibition(int racecatId, int exhibitionId) {
+        String sql = "INSERT INTO exhibition_racecats (racecat_id, exhibition_id) VALUES (?, ?)";
+        jdbcTemplate.update(sql, racecatId, exhibitionId);
+    }
+
+    public void removeCatFromExhibition(int catId, int exhibitionId) {
+        String sql = "DELETE FROM exhibition_racecats WHERE racecat_id = ? AND exhibition_id = ?";
+        jdbcTemplate.update(sql, catId, exhibitionId);
+    }
 }

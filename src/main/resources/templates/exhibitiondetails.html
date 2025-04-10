@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/exhibitionstyle.css}">
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <title>Udstillingsdetaljer</title>
+</head>
+<body>
+
+<h1 th:text="${exhibition.name}"></h1>
+<div class="exhibition-container">
+    <div class="exhibition-box">
+        <p><strong>Dato:</strong> <span th:text="${exhibition.date}"></span></p>
+        <p><strong>Beskrivelse:</strong> <span th:text="${exhibition.description}"></span></p>
+        <br>
+    </div>
+    <div class="exhibition-box">
+    <h2>Katte der deltager:</h2>
+    <ul>
+        <li th:each="cat : ${participatingCats}">
+            <span th:text="${cat.name} + ' (' + ${cat.age} + ')'"></span>
+            <form th:action="@{/exhibitions/removecat}" method="post">
+                <input type="hidden" name="exhibitionId" th:value="${exhibition.id}">
+                <input type="hidden" name="catId" th:value="${cat.id}">
+                <button type="submit">Fjern kat</button>
+            </form>
+        </li>
+    </ul>
+
+    </div>
+</div>
+
+<div class="racekatteliste-box">
+    <h2>Tilmeld en af dine katte:</h2>
+    <form th:action="@{/exhibitions/addcat}" method="post">
+        <input type="hidden" name="exhibitionId" th:value="${exhibition.id}">
+        <div th:each="cat : ${userCats}">
+            <input type="checkbox" name="catIds" th:value="${cat.id}">
+            <span th:text="${cat.name} + ' (' + ${cat.age} + ')'"></span>
+        </div>
+        <button type="submit">Tilmeld kat</button>
+    </form>
+
+</div>
+
+<div class="BtnTilbage">
+    <button id="tilbage" type="submit"><a th:href="@{/exhibitions}">Tilbage</a></button>
+</div>
+
+</body>
+</html>

@@ -4,9 +4,9 @@ body {
     background-size: auto 100%;
     background-position: center;
 }
-h5 {
+h2 {
     font-family: Papyrus, serif;
-    font-size: 50px;
+    font-size: 30px;
     text-align: center;
 }
 h1 {
@@ -96,6 +96,19 @@ button:hover {
     gap: 10px;
     justify-content: center;
     align-items: center;
-    margin-top: 10px;
+    margin: auto;
+}
 
+.racekatteliste-box {
+    margin-right: auto;
+    margin-left: auto;
+    font-family: Papyrus, serif;
+    border-radius: 10px;
+    background: antiquewhite;
+    border: 1px solid #666;
+    width: calc(33.33% - 20px);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+    box-sizing: border-box;
+    padding: 15px;
+    text-align: center;
 }

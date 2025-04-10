@@ -3,6 +3,7 @@ package org.example.racekattegruppen.Controller;
 
 import jakarta.servlet.http.HttpSession;
 import org.example.racekattegruppen.Model.Exhibition;
+import org.example.racekattegruppen.Model.Racekat;
 import org.example.racekattegruppen.Model.User;
 import org.example.racekattegruppen.Service.ExhibitionsService;
 import org.example.racekattegruppen.Service.RacekatteService;
@@ -17,10 +18,6 @@ import java.util.List;
 @Controller
 public class ExhibitionsController {
     @Autowired
-    private RacekatteService racekatteService;
-    @Autowired
-    private UserService userService;
-    @Autowired
     private ExhibitionsService exhibitionsService;
 
 
@@ -28,8 +25,10 @@ public class ExhibitionsController {
     public String getExhibitions(Model model, HttpSession session) {
         User user = (User) session.getAttribute("currentUser");
         model.addAttribute("user", user);
+
         List<Exhibition> exhibitions = exhibitionsService.readAllExhibitions();
         model.addAttribute("exhibitions", exhibitions);
+
         return "exhibitions";
     }
 
@@ -78,6 +77,42 @@ public class ExhibitionsController {
         exhibitionsService.updateExhibition(exhibition);
         return "redirect:/exhibitions";
     }
+
+    @GetMapping("/exhibitions/{id}")
+    public String getExhibitionDetails(@PathVariable int id, Model model, HttpSession session) {
+        User user = (User) session.getAttribute("currentUser");
+
+        Exhibition exhibition = exhibitionsService.readExhibition(id);
+        if (exhibition == null) {
+            System.out.println("Ingen udstilling fundet med id: " + id);
+            return "redirect:/exhibitions";
+        }
+
+        model.addAttribute("user", user);
+        model.addAttribute("exhibition", exhibition);
+        model.addAttribute("participatingCats", exhibitionsService.getCatsInExhibition(id));
+        List<Racekat> userCats = exhibitionsService.getUserCats(user.getId());
+        model.addAttribute("userCats", userCats);
+
+        return "exhibitiondetails";
+    }
+
+    @PostMapping("/exhibitions/removecat")
+    public String removeCatFromExhibition(@RequestParam int exhibitionId, @RequestParam int catId, HttpSession session) {
+        exhibitionsService.removeCatFromExhibition(catId, exhibitionId);
+        return "redirect:/exhibitions/" +exhibitionId;
+    }
+
+
+    @PostMapping("/exhibitions/addcat")
+    public String addCatToExhibition(@RequestParam int exhibitionId, @RequestParam List<Integer> catIds, HttpSession session) {
+        for (Integer catId : catIds) {
+            exhibitionsService.addCatToExhibition(catId, exhibitionId);
+        }
+        return "redirect:/exhibitions/" +exhibitionId;
+    }
+
+
 
 
 
