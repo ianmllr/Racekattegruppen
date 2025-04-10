@@ -34,12 +34,12 @@ public class PaymentController {
 
     @PostMapping("/payment/initiate")
     public String initiatePayment(@RequestParam int exhibitionId , @RequestParam List<Integer> catIds,HttpServletResponse response, HttpSession session, Model model) throws Exception {
-        int price = exhibitionsService.getExhibitionByPrice(exhibitionId);
+        int price = exhibitionsService.getExhibitionByPrice(exhibitionId); // sætter pris, som er fra exhibition
 
         for (Integer catId : catIds) {
             System.out.println("Tjekker cat id: " + catId);
 
-            if (exhibitionsService.isCatPaidForExhibition(catId, exhibitionId)) {
+            if (exhibitionsService.isCatPaidForExhibition(catId, exhibitionId)) { // tjekker om allerede er betalt for denne kat
                 System.out.println("Cat id: " + catId + "Har allerede joinede");
                 model.addAttribute("error", "Katten er allerede tilmeldt");
                 return "error";
@@ -47,11 +47,11 @@ public class PaymentController {
         }
         String checkoutUrl = stripeService.createCheckoutSession(
 
-              price , // fx 50 kr.
+              price ,
 
-                "http://localhost:8080/payment/success/" + exhibitionId,
+                "http://localhost:8080/payment/success/" + exhibitionId, // definerer successUrl
 
-                "http://localhost:8080/payment/cancel"
+                "http://localhost:8080/payment/cancel" // definerer cancelUrl
         );
         session.setAttribute("catIds", catIds);
         session.setAttribute("exhibitionId", exhibitionId);
@@ -70,7 +70,7 @@ public class PaymentController {
             return "redirect:/exhibitions/" + exhibitionId;
         }
         for (Integer catId : catIds) {
-            exhibitionsService.addCatToExhibition(catId, exhibitionId);
+            exhibitionsService.addCatToExhibition(catId, exhibitionId); // tilføjer katten til exhibition
         }
         model.addAttribute("exhibitionId", exhibitionId);
         return "success";

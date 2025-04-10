@@ -30,11 +30,11 @@ public class UserService {
     }
 
     public Boolean register(User user) {
-        if (userRepo.readUserByEmail(user.getEmail()) != null) {
+        if (userRepo.readUserByEmail(user.getEmail()) != null) { // tjekker om email findes
             return false;
         }
         String hashed = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
-        user.setPassword(hashed);
+        user.setPassword(hashed); // sætter hashed password, som password
         return userRepo.createUser(user);
     }
 

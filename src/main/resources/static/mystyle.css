@@ -315,17 +315,20 @@ input[type="submit"]:hover {
     line-height: 25px;
 }
 .SuccessBack {
-    width: 250px;
-    height: 50px;
-    padding: 10px;
-    font-size: 20px;
-    border: 2px solid black;
-    border-radius: 10px;
-    background: navajowhite;
+    width: 150px;
+    height: auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    background-color: navajowhite;
+    background: none;
     font-family: Papyrus, Serif;
     font-weight: bold;
     text-align: center;
     display: block;
+    position: relative;
+    left: -20px;
+    margin: 10px auto
 }
 .CancelBack {
     width: 150px;

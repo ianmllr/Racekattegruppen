@@ -68,10 +68,10 @@ public class ExhibitionRepo {
         jdbcTemplate.update(sql, catId, exhibitionId);
     }
     public boolean isCatPaidForExhibition(int catId, int exhibitionId) {
-        String sql = "SELECT COUNT(*) FROM exhibition_racecats WHERE racecat_id = ? AND exhibition_id = ?";
+        String sql = "SELECT COUNT(*) FROM exhibition_racecats WHERE racecat_id = ? AND exhibition_id = ?"; // Tjekker om racecat_id og exhibition_id findes i table
         System.out.println("Executing query: " + sql + " with catId: " + catId + " and exhibitionId: " + exhibitionId);
-        Integer count = jdbcTemplate.queryForObject(sql, Integer.class, catId, exhibitionId);
+        Integer count = jdbcTemplate.queryForObject(sql, Integer.class, catId, exhibitionId); // Integer.class sørger for at vi sikre at det en int
         System.out.println(count);
-        return count != null && count > 0;
+        return count != null && count > 0; // returner 1
     }
 }

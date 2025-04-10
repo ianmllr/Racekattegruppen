@@ -13,12 +13,12 @@ import java.util.Map;
 @Service
 public class StripeService {
 
-    @Value("${stripe.secret.key}")
+    @Value("${stripe.secret.key}") // henter api key
     private String stripeSecretKey;
 
     @PostConstruct
     public void init() {
-        Stripe.apiKey = stripeSecretKey;
+        Stripe.apiKey = stripeSecretKey; // sætter api keyen
     }
 
 

@@ -8,6 +8,9 @@
 <body>
 <h1>Tak for din betaling!</h1>
 <h2>Din betaling blev gennemført med Stripe.</h2>
-<a th:href="@{/exhibitions/{id}(id=${exhibitionId})}">Gå til exhibition</a
+<div class="SuccessBack">
+<button id="btnToExhibition"><a th:href="@{/exhibitions/{id}(id=${exhibitionId})}">Gå til exhibition</a> </button>
+</div>
+
 </body>
 </html>
