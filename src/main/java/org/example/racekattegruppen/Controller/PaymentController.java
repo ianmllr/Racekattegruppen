@@ -1,15 +1,24 @@
 package org.example.racekattegruppen.Controller;
 
+import jakarta.servlet.http.HttpSession;
+import org.example.racekattegruppen.Model.User;
+import org.example.racekattegruppen.Service.ExhibitionsService;
 import org.example.racekattegruppen.Service.StripeService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Controller;
 
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 
 import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
 
 
 @Controller
@@ -18,34 +27,42 @@ public class PaymentController {
 
 
     @Autowired
-
     private StripeService stripeService;
+    @Autowired
+    private ExhibitionsService exhibitionsService;
 
 
-    @GetMapping("/payment")
-    public void getPaymentPage(HttpServletResponse response) throws Exception {
-
+    @PostMapping("/payment/initiate")
+    public void initiatePayment(@RequestParam int exhibitionId , @RequestParam List<Integer> catIds,HttpServletResponse response, HttpSession session) throws Exception {
+        int price = exhibitionsService.getExhibitionByPrice(exhibitionId);
         String checkoutUrl = stripeService.createCheckoutSession(
 
-                50, // fx 50 kr.
+              price , // fx 50 kr.
 
-                "http://localhost:8080/success",
+                "http://localhost:8080/payment/success/" + exhibitionId,
 
-                "http://localhost:8080/cancel"
-
+                "http://localhost:8080/payment/cancel"
         );
-
-
+        session.setAttribute("catIds", catIds);
+        session.setAttribute("exhibitionId", exhibitionId);
         response.sendRedirect(checkoutUrl);
 
     }
 
 
-    @GetMapping("/success")
-
-    public String paymentSuccess() {
-
-        return "success"; // lav en success.html
+    @GetMapping("/payment/success/{exhibitionId}")
+    public String paymentSuccess(@PathVariable int exhibitionId , HttpSession session, Model model) throws Exception {
+        User user = (User) session.getAttribute("currentUser");
+        List<Integer> catIds = (List<Integer>) session.getAttribute("catIds");
+        if (catIds == null) {
+            System.out.println("Kat id findes ikke i session");
+            return "redirect:/exhibitions/" + exhibitionId;
+        }
+        for (Integer catId : catIds) {
+            exhibitionsService.addCatToExhibition(catId, exhibitionId);
+        }
+        model.addAttribute("exhibitionId", exhibitionId);
+        return "success";
 
     }
 
@@ -53,8 +70,6 @@ public class PaymentController {
     @GetMapping("/cancel")
 
     public String paymentCancel() {
-
         return "cancel"; // lav en cancel.html
-
     }
 }

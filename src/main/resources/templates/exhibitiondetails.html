@@ -33,7 +33,7 @@
 
 <div class="racekatteliste-box">
     <h2>Tilmeld en af dine katte:</h2>
-    <form th:action="@{/exhibitions/addcat}" method="post">
+    <form th:action="@{/payment/initiate}" method="post">
         <input type="hidden" name="exhibitionId" th:value="${exhibition.id}">
         <div th:each="cat : ${userCats}">
             <input type="checkbox" name="catIds" th:value="${cat.id}">

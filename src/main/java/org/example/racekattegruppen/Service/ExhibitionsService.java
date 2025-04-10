@@ -78,4 +78,7 @@ public class ExhibitionsService {
     public void removeCatFromExhibition(int catId, int exhibitionId) {
         exhibitionRepo.removeCatFromExhibition(catId, exhibitionId);
     }
+    public int getExhibitionByPrice(int id) {
+        return exhibitionRepo.readExhibition(id).getPrice();
+    }
 }
