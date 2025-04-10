@@ -11,7 +11,7 @@
 <button id ="newExhibitionButton"><a th:href="@{/newexhibition}">Opret ny udstilling</a></button>
 
 <div class="exhibition-container">
-    <div class="exhibition-box" th:each="exhibition : ${exhibitions}">
+    <div class="exhibition-box1" th:each="exhibition : ${exhibitions}">
         <h2 th:text="${exhibition.name}"></h2>
         <p><strong>Dato:</strong> <span th:text="${exhibition.date}"></span></p>
         <p th:text="${exhibition.description}"></p>
