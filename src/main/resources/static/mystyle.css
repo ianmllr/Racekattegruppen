@@ -212,13 +212,14 @@ input[type="submit"]:hover {
     margin-left: auto;
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
     border-radius: 10px;
-    width: 40%;
+    width: 750px;
     font-family: Papyrus, serif;
     font-weight: bold;
 }
-#description {
-    width: 350px;
+#description1 {
+    width: 325px;
     height: 100px;
+    background-color: navajowhite;
 
 }
 #kat table {

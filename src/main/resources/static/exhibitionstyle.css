@@ -32,14 +32,14 @@ a:hover {
     cursor: pointer;
 }
 button {
-    width: 200px;
+    width: 190px;
     height: 50px;
     padding: 10px;
     font-size: 20px;
     border: 2px solid black;
     border-radius: 10px;
     background: navajowhite;
-    font-family: Papyrus, Serif;
+    font-family: Papyrus, sans-serif;
     font-weight: bold;
     text-align: center;
     margin: 35px auto;
@@ -79,7 +79,7 @@ button:hover {
     border-radius: 10px;
     background: antiquewhite;
     border: 1px solid #666;
-    width: calc(40% - 20px);
+    width: 700px;
     margin: 10px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
     box-sizing: border-box;
@@ -91,7 +91,7 @@ button:hover {
     text-decoration-color: white;
 }
 .button-container {
-    display: flex;
+    display: inline-flex;
     gap: 10px;
     justify-content: center;
     align-items: center;
