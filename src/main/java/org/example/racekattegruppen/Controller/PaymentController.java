@@ -42,7 +42,7 @@ public class PaymentController {
 
             if (exhibitionsService.isCatPaidForExhibition(catId, exhibitionId)) { // tjekker om allerede er betalt for denne kat
                 System.out.println("Cat id: " + catId + "Har allerede joinede");
-                redirectAttributes.addFlashAttribute("error", "Katten er allerede tilmeldt");
+                redirectAttributes.addFlashAttribute("error", "Mindst en kat er allerede tilmeldt");
                 return "redirect:/exhibitions/" + exhibitionId;
             }
         }
