@@ -17,6 +17,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -33,7 +34,7 @@ public class PaymentController {
 
 
     @PostMapping("/payment/initiate")
-    public String initiatePayment(@RequestParam int exhibitionId , @RequestParam List<Integer> catIds,HttpServletResponse response, HttpSession session, Model model) throws Exception {
+    public String initiatePayment(@RequestParam int exhibitionId , @RequestParam List<Integer> catIds, HttpServletResponse response, HttpSession session, Model model, RedirectAttributes redirectAttributes) throws Exception {
         int price = exhibitionsService.getExhibitionByPrice(exhibitionId); // sætter pris, som er fra exhibition
 
         for (Integer catId : catIds) {
@@ -41,8 +42,8 @@ public class PaymentController {
 
             if (exhibitionsService.isCatPaidForExhibition(catId, exhibitionId)) { // tjekker om allerede er betalt for denne kat
                 System.out.println("Cat id: " + catId + "Har allerede joinede");
-                model.addAttribute("error", "Katten er allerede tilmeldt");
-                return "error";
+                redirectAttributes.addFlashAttribute("error", "Katten er allerede tilmeldt");
+                return "redirect:/exhibitions/" + exhibitionId;
             }
         }
         String checkoutUrl = stripeService.createCheckoutSession(
