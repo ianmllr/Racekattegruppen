@@ -109,21 +109,21 @@ public class ExhibitionsController {
         return "redirect:/exhibitions/" + exhibitionId;
     }
 
-//    @PostMapping("/exhibitions/addcat")
-//    public String addCatToExhibition(@RequestParam int exhibitionId, @RequestParam List<Integer> catIds, RedirectAttributes redirectAttributes) {
-//        List<Racekat> catsInExhibition = exhibitionsService.getCatsInExhibition(exhibitionId);
-//
-//        // tjekker om en kat man vil tilføje allerede er i udstillingen og tilføjer kat hvis det er falsk
-//        for (Integer catId : catIds) {
-//            boolean catAlreadyInExhibition = catsInExhibition.stream().anyMatch(cat -> cat.getId() == catId);
-//            if (!catAlreadyInExhibition) {
-//                exhibitionsService.addCatToExhibition(catId, exhibitionId);
-//            } else {
-//                redirectAttributes.addFlashAttribute("error", "Mindst en kat er allerede i udstillingen.");
-//            }
-//        }
-//        return "redirect:/exhibitions/" + exhibitionId;
-//    }
+    @PostMapping("/exhibitions/addcat")
+    public String addCatToExhibition(@RequestParam int exhibitionId, @RequestParam List<Integer> catIds, RedirectAttributes redirectAttributes) {
+        List<Racekat> catsInExhibition = exhibitionsService.getCatsInExhibition(exhibitionId);
+
+        // tjekker om en kat man vil tilføje allerede er i udstillingen og tilføjer kat hvis det er falsk
+        for (Integer catId : catIds) {
+            boolean catAlreadyInExhibition = catsInExhibition.stream().anyMatch(cat -> cat.getId() == catId);
+            if (!catAlreadyInExhibition) {
+                exhibitionsService.addCatToExhibition(catId, exhibitionId);
+            } else {
+                redirectAttributes.addFlashAttribute("error", "Mindst en kat er allerede i udstillingen.");
+            }
+        }
+        return "redirect:/exhibitions/" + exhibitionId;
+    }
 
 
 

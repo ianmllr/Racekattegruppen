@@ -18,7 +18,7 @@ public class StripeService {
 
     @PostConstruct
     public void init() {
-        Stripe.apiKey = stripeSecretKey; // sætter api keyen
+        Stripe.apiKey = stripeSecretKey; // sætter api key
     }
 
 
